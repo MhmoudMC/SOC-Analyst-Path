@@ -1,0 +1,102 @@
+1.Scanning:
+A)scanning i a process of sending signal or data packets to system or network to gather info, it's like testing every doo and windows in the nighborhood to see witch ones are unlocked.
+
+B).Why do attackers scan?
+to see the way to enter the devices, like a map of :
+*to find which computers or devices are actually in the network,
+*and to see which port are open so he can prodacut (port 80 for websites or port 22 for remote login),
+*and to odentify what software and version ais runing (windows server 2022 for exmple), 
+*to automatically check if those services have known security holes that can easily broken into.
+
+C)
+Port scaning: testing the 65535 ports to see which ones are open, goal is to find any listening service, it tells the atacker "door 80 is open"
+Service/Version Scanning:once they found an open port, the scanner sends a request to that port to see how it responds
+., goal is to see the exact software and version number.
+
+
+D) What Evidence Scanning Leaves:
+Scanning is rarely silent. it leaves:
+*Connection spike: the scanner connect to thousands port in few seconds, it's unnatural spike in network traffic.
+*Incomplete Handshakes:not completing the connection, whichs takes from system's memory.
+*"Door Rattling" LOgs:Firewalls and server will log thousands of"connection refused or access denied" from single IP .
+*Specific Patterns: scanner often check ports in specific order, sequential or random. and that triggers as "non-human behaviour"
+
+2.Brute Force:
+A)what does Brute Force mean: it mean, computer is using raw power to try every possible combination until it succeeds.
+B)What is being Brute-Forced? these:
+*Passwords/*Usernames(for finding vaalid email address)/*Encryption Keys(To unlock scrambled file without originalkey)
+/*Hidden URLs(Trying thousands of folders name, to find pages that aren't linked anywhere).
+
+C)Online vs Offline *Basic Idea*
+Feature   Online Brute Force          Offline Brute Force
+
+Locating  The attacker talks direct   the attacker has stolen file and
+          to live website or server   cracking it on their own pc
+ 
+Speed     Slow.Limited by internet    superfast.limited to attacker's 
+          speed and servers repond    Hardware
+
+Risk      High. the server sees the   Zero. the victim has no idea the
+          failed attempts and can     attack is happening because it's
+          block the attacker          not on their system
+
+Analogy   Trying to guss PIN at ATM   taking the ATM home and cutting 
+                                      it open with saw
+D)Why it is Noisy and Detectable
+*Volume of Failed Logins
+*Nonsensical DAta: attacker often use"Dictionary List" that include weird characters or strings that no human will typ
+*The "account Lockout"Trigger:modern systems are st to Lock an account after 5 to 10, when it brute forces, they lock every user out, wichs calls the support
+*Resource Drain: a havey brute force can slow down a website, making it feel like "Min-DoS"
+
+3.What is a Threshold?
+A)it defines how many times an event happen within specific timeframe before system considers it sus like :
+Even: something happen, count: how manytimes, what time: 60 seconds.
+
+
+B)why it's Exist:it's like a noise reduction, it just to show that activity isn't human, and even worlks with other apps to block IP.
+C)The Challenge: False Positives:
+If threshold was to low, it trigger even human simple thing like entering password wrong twice activite trigger, whichs FalsePositive .
+Term	    Simple Definition
+Threshold	The "tipping point" where activity becomes an alert.
+Logic	    Event + Count + Time = Alert.
+Goal	    To stop chasing normal behavior and start chasing threats.
+Tuning     	Adjusting thresholds to reduce False Positives.
+
+
+4.what"Source" Means in Attacks:
+in any attack there are two main sides the sourc(where attack starts) and destination (the target)
+
+the most common way to identify a source  is by it's IP Address
+
+
+B)Single vs Multiple Sources:
+singe source(One to One)
+from i spicific device.  in soc: you see single ip generating huge spike in errors.
+Multiple Sources: the attack comes from many different devices at the same time. this often called a distributed attack: a hacker controls 10,000 ifected smart fridges and webcams ordering them to ping the website.
+C)Why Source Matters for Detection
+
+A Single IP     :Easy to spot. "Why is this one guy failing so much?"	Block the IP. The attack stops immediately.
+
+
+Multiple IPs	: Harder to spot. Each IP might only fail twice, so it stays under your [Threshold].	Rate Limiting. You can't block the whole internet, so you slow down everyone. 
+
+
+An Internal IP	: Very Alarming. The attack is coming from inside your office.	Isolate the Machine. A coworker's PC is likely infected or they are a malicious insider.
+
+
+A Known"Bad" IP : Reputation-based. The IP belongs to a known hacker group or a proxy service.	Pre-emptive Block. Don't even wait for them to fail; block them on sight.
+
+The Source tells you the scale and location of the threat.
+
+
+
+
+
+
+
+
+
+
+
+
+

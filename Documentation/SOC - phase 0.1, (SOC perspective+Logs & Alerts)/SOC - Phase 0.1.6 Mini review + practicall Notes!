@@ -1,0 +1,70 @@
+Part 1: Mini Review :This phaes shifts my perspective from how network work to how soc analyst observe them.
+
+
+1.The foundation: Logs, Events, and Alerts
+
+*Logs: These are append-only, timestamped records of events. they are"historical trail"used to reconstruct what happ.
+*event vs alerts:
+#Event are factual record("backup completed") that happed frequently. they are for documentation.
+#Alerts are signal generated when logic detects potenial risk(20 failed logins) they require analysis and usually imply current problem.
+*The Goal:SOC analysts look for patterns and abnormal begavior, not just isolated incidents.
+
+2.The Engine: Correlation
+*Deficition: Correlation is turning many boring logs into one meaningful security alert.
+*Why it matters: A single logmeans almost nothing on its own.
+*The Logic: You must link data points(Firewall connection+VPN failure+AD password reset) to see full story such as account compromise.
+*Prerequeisite:If you don't understand what specific log type(like windows Event logs or Firewall logs)tells you, you cannot correlate it.
+
+
+3.The Analysis: True Positive (TP) vs. False Positive (FP)
+*True Positive: the alert triggered, and the mailcious activity is real. action: Escalate/Remediate.
+*False Positve: The alert triggered, but the activity is bening or expected. Action: close and tune.
+*False Negative: No alert triggered, but malicious activity occurred. This is a critical failure.
+
+
+Part 2: Practical Notes (Field Guide): use these as checklist when you are lookingat an alert.
+
+**Investigation Checklist(The "Immediate Checks"): when you see a log, check these three connection immediately:
+1.Timestamp:Is the event inside a suspicious time windows(3AM) or overlapping with other event?
+2.Identity: is the Source/Destination internal or external? Is the IP/Domain reputation known?
+3.Behavior: Is the action (Accept/deny) or protocol expected for this device? is there a pattern like scanning?
+
+**Detecting Attacks
+#Scanning INdicators:
+  1.look for connection spikes (thousands of ports in seconds)
+  2.Look for "Door Ratting" logs: thousands of "connection refused" or "access denied" massages from a single IP.
+
+#Brute Force Indicators:
+  1.High volume of failed logins.
+  2.Account Lockouts: System often lock accounts after 5-10 fails; widespread lockouts indicate a brute force attack.
+  3.Threshold: Understand that attacks are often detected by math:Event + Count +T ime = Alert.
+
+**How to Decide: TP or FP?: use the 3-Pillar Framwork to decide:
+A)Verification(Did it happen?:Check raw logs to confirm the event exists. if the error code is PASSWORD_EXPIRED, it likly an FP.
+B)Contextualization (Is it normal here?):
+*Role: HR running PowerShell is suspicious; a developer doint it might be normal.
+*Baseline: has this user done this before? First-time behavior after years of silence is a TP indicatior.
+C)Correlation (Is there a trail?): A single alert is weak.A kill chain(Login-->Scanning-->Data transfer)is a confirmed TP.
+
+
+**Handling Sources(Response Guide)|
+*Single IP:Easy to spot. Block the IP to stop the attack.
+*Multiple IPs(Disributed):Harder to spot. Use rate limiting because you can't block the whole internet.
+*Internal IP:Very alarming, it implies an infected machine or milcious insder.$$Isolate the machine$$.
+
+
+Pro tip:IF you classify something as a False Positive, you job is not finished. You must suggest tuning(whitelisting a specific user or IP) to reduce future noise.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
