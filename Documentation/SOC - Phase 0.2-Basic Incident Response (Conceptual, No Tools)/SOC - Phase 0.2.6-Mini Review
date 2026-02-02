@@ -1,0 +1,50 @@
+Here is the “Screenshot” (Use this exactly)
+🔹 Event / Alert / Incident
+
+    Event: any logged action (neutral)
+
+    Alert: event(s) flagged by a rule
+  
+    Incident: confirmed malicious activity with impact
+
+🔹 When does Alert become Incident?
+
+   Only when at least one exists:
+
+       Confirmed malicious behavior
+
+       Asset / user impact
+
+       Policy violation
+
+       Required response action
+
+   No impact → no incident.
+
+🔹 Escalation Link
+
+   Alert → investigate (L1)
+
+   Incident → escalate based on:
+
+      Impact
+
+      Confidence
+
+     Asset criticality
+
+🔹 Analyst Rule
+
+   If I cannot clearly describe what happened, where, when, and impact,
+   it is not an incident yet.
+
+#How to use this
+
+    Keep it one small section
+
+    Do not expand it later
+
+    When confused in future phases → glance → continue
+
+That’s it.
+
