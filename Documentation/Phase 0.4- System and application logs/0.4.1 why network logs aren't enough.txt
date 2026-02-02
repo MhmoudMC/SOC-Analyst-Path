@@ -1,0 +1,25 @@
+Why Network Logs are not enough: Imagine you are a security guard for large building.
+*Network Logs are like that cameras outside the front door and in the hallways, show who Entered and which room they went into.
+*System/Host logs are like the cameras and sensors inside the room. they show you what the person actually did once they sat down at the desk.
+
+#The blind spots of network logs: if you only look at the network, you will miss these three critical things:
+1.Encrypted Traffic (The locked suitcase) most web traffic today is HTTPS. a network log like from fire wall might show: 192.168.1.5 ---> 104.26.10.23 (Port 443). it knows a connection happened, but cannot see "inside" the data because it is encrypted, you don't know if the user is downloading a PDF or a piece of malware.
+2.Local Activity (The Inside Job) if a user plugs in a malicious USB drive or runs a script that deletes all their files, nothing goes over the network.
+*The firewall sees: Nothing.
+*The system logs (Windows/Linux) see: everything (File deletion, USB insertion, new process started).
+
+3.What vs How a network logs tells you what happened (a file wad downloaded). a system logs tells you how it happened.
+*Network logs: user downloaded invoice.zip.
+*System Log: chrome.exe saved invoice.zip, then cmd.exe opened it and tried to change the system password.
+
+Comparison Table: Network vs. Host
+
+Feature   	Network Logs (Firewall/IDS)	Host Logs (Windows/Linux/App)
+Visibility:  	  Connections between devices	Actions inside the device
+Encrypted Data:   Cannot see inside             Can see data before/after encryption
+Lateral Movement: Great at spotting it          good at spotting the method
+Internal Tools:   Blind to local commands       Records every command run
+
+
+SOC THINKING Tip :
+IN a real investigation, you usually start with a Network Alert ("This computer talked to a bad IP") and then you pivot to the system Logs to see "What did that computer do right after talking to that IP".

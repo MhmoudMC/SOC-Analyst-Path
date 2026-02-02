@@ -1,0 +1,25 @@
+1. Access Logs. it's like a fastest documenting, every move, every click or url open, is in the log,
+*What it tells me? who came to the site, when, and what they did.
+*Key parts for a SOC analyst:
+ *IP Address: where the visitor is coming from.
+ *HTTP status Code: Did the page load ? (200 is ok, 404 is not found)
+ *Request Method: are they just looking (GET) or sending data (POST)?
+ *User Agent: what browser or tool are they using? (Attacker often use "Scripts" here).
+SOC PRO TIP: if you see on IP address trying to access 500 different pages in one minute, it's likely a web scanner or a brute-force attack.
+
+2.Error Logs. It's like they only record something goes wrong,
+*What it tells: why the server failed to do something.
+*Key parts for SOC Analyst:
+ *Critical Errors: If the server crashed.
+ *403 Forbidden: someone tried to go somewhere they aren't allowed.
+ *500 Internal Server Error: this cloud mean an attacker sent "bad code" that broke the server (Like a SQL Injection).
+
+Feature        Access Log                        	Error Log
+
+Purpose	     Records every request (Success + Failure)	Records only problems/glitches
+Main Use     Monitoring traffic & find patterns         Debugging & finding exploits
+Volume       very large (lots of data)                  Smaller (Only errors)
+
+
+Why this matters for you:
+In a SOC, you will use a tool like Splunk or ELK to search these logs. If you see many 404 errors followed by a 200 OK on a sensitive page (like /admin), you know someone just successfully guessed a hidden URL.
