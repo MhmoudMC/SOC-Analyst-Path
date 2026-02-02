@@ -1,0 +1,38 @@
+What is the port ?
+a port is a virtual point where network connections start and end. (think of it as a specific "door" or "dock" on your computer that allows diffrent types of data to reach the correct application.)
+
+While the ip address identifies a specific device on a network, a port number identifies a specific service or applicatio on that device (like an apartment number within that house).
+
+How Ports work?
+when data travels over the internet, it is sent to an IP address. once it arrives at the device, the (operating system) looks at port number and decide which program should receive the data 
+
+There are 65,535 available port number :
+
+
+RANGE         : NAME                 : DESCRIPTION
+0- 1,023      : well-known Ports     : reserved for standard servieces like web browsing and email.
+1,024-49,151  : Registered Ports     : Used by specific companies or applications (e.g, gaming or databases)
+49,151-65,535 : Dynamic/Private ports: Temporary ports used by my computer when i initiate(starts) a connection.
+
+common ports : Port 80 http (used for unenecrypted webbing), Port 443 https (used for encrypted webbing) Port 25 SMTP for emails, and Port 22 SSH Used for secure remote logins to other computers.
+
+what i know now:
+the ip is a logical adress like your home addres.
+the data to your spiciffic room by port (remember, data knows your house location, and now the rooms by ports by operating system.)
+
+
+well knowning port for stander stuff, we servieces or email. (0 to tira 1,023)
+Rigestered Ports used by specific companies or applications (gaming, database, or even ai programs) 1,024-49,151.
+the port don't give alert by itse;f, the alert comes from abnormal relate to.
+Exmaple :
+1.Normal user device:
+opens Port 22 SSH = redflag
+2.the device start connection on:
+alot of port fast, whichs men port Scanning = redflag
+3.Extenal Connection on:
+unsual port (like 4444) = redflag
+4.HTTPS 443:
+if the domaom is suspessious = redflag (EDR + SIEM).
+
+from where the elerts comes ?
+Port alone are not malicious, but abnormal port usage or begavior can trigger alerts in EDR, IDS, or SIEM systems.
