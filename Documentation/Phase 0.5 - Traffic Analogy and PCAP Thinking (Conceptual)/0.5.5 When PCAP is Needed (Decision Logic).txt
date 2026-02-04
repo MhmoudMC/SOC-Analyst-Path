@@ -1,0 +1,72 @@
+Why we need PCAP? usually, we look at PCAPs when standard logs (Like SIEM or Firewall logs), don't give us the full story, here are three main reasons:
+1.Protocoal Deep Dive: when you see unusual traffic on a port and need to see the payload (The actual data inside).
+2.Confirming Exploit Success: to see if a "Remote Code Execution: (RCE) attempt actually worked or if the server blocked it.
+3.Malware Behavior: to see exactly what a virus is downloading from its downloading from its command & Control (C2) server.
+
+
+
+The Decision Logic, Imagine you receive an alert "SQL Injection Attempt Detected"
+Entry Points for Exploration:
+1.The "Full Picture" Entry: Why is seeing the response from the server more important than just seeing the attack?
+2.The "Encryption" Entry: What happens to our decision logic if the traffic is encrypted (HTTPS)?
+3.The "Resource" Entry: When should we NOT pull a PCAP even if we are curious?
+
+#1.The Full Picture (Request vs. Response). an alert often shows the Request (what the attacker sent). but the repones (What the server sent back) tells you if you actually have a crisis or just a noisy failed attempt.
+*The Problem :SIEM logs might say "attacker sent SELECT * FROM users.
+*The Missing Piece: Did the server sent back a list of passwords, or did it send a 404 Not Found error?
+*PCAP Logic: if the logs don't show the server's answer, you must pull the PCAP. this confirms if data was actually stolen (Exfiltration).
+
+
+
+#2.The Encryption Wall. This is a big challenge for soc, most web traffic today uses HTTPS, 
+
+*The Logic: If the traffic is encrypted and you don't have the "Keys" to unlock it (SSL Decryption), a PCAP might look like gibberish.
+*The Decision:
+ *Encrypted? Focus on Flow Logs (Who talked to whom and for how long).
+ *Unencrypted (HTTP, FTP, Telnet)? Pull the PCAP immediately! You can read everything in plain text.
+*Pro Tip: Even if it's encrypted, we sometimes look at the TLS Handshake in the PCAP to see the SNI (The website name) or the Certificate to see if it's a fake site.
+
+
+#3.The "Resource" Limit... in a real company, PCAP files are *huge* capturing everything is like trying to record every single person in a city talking at once, you hard drive will explode.
+Do NOT pull PCAP if:
+*The alert is a known "False Positive": IF you've seen this alert 100 times and it's always a mistake, don't waste time/storage.
+
+*You already have the answer: if your EDR logs show the file was blocked and deleted, the PCAP won't tell you much more.
+*High Speed/Volume : Pulling PCAP on a 10Gbps link during peak house can rash a sensor if it's not powerful enough.
+
+Scenario                     Pull PCAP?   Why?
+Clear logs show "Blocked"    NO           save time/storage.
+Suspicious file download     Yes          To extract the file and scan it.
+Encrypted traffic (No Keys)  Maybe        only to check the Handshake/SNI.
+Possible Data Leak           Yes          To prove exactly what data left the building.
+
+
+
+Can I see it? (Is it unencrypted? Do I have keys?) → PCAP is King.
+
+Is it "Blind"? (Is it encrypted?) → Logs are King.
+
+Is it "Dead"? (Was it blocked?) → Move to the next alert.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
