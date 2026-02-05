@@ -1,0 +1,15 @@
+Analyst Question Checklist ;
+1.Is the direction Inbound, Outbound, or Internal?
+2.Is the IP known to be malicious?
+Top Reputation Checkers
+1.VirusTotal: The most famous one. It checks the IP against 80+ security databases at onc
+2.Great for checking if an IP has been reported for spam or hacking by other system admins.
+3.Cisco Talos: Shows the "Web Reputation" (Good, Neutral, or Poor) based on Cisco's massive data.
+
+*How it works: You paste the IP (e.g., 103.x.x.x) into VirusTotal. 0/88clean. 5/88 sus.    
+40/80 is bad.
+
+3.Action: did the security tools Allows or Drop the traffic?
+4.OUtcome: Was the attempt Successful or Failed?
+5.Post-Access Activity: Did the attacker perform any Exfiltration or Persistence (like creating that new user)?
+6.Root Cause: was there a known Vulnerability that let them in?.
