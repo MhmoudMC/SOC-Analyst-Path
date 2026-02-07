@@ -1,0 +1,49 @@
+What is a Security Incident?
+Incident = a confirmed security problem with impact.
+A security incident is a violation or imminent threatto confidentiality, integrity, or availability CIA that affects the business.
+#key points:
+*Varified (No just detected)
+*Has impact or clear risk
+*Requires response and documantation
+Examples:
+*Confirmed account compromise
+Data exfilration
+*Ransomware execution
+*Unauthorized access to producation systems ***Incident trigger #IR process# not just monitoring.
+
+B(Bussiness Impact vs Technical Impact:
+#Technical Impact : What happened to the system?:
+*CPUT spike
+*Service crash
+*Malware file present
+*Port scan detected
+
+
+#Business Impact: What happened to organization:
+*Data stolen
+*Service downtime
+*Financial loss
+*Legal/ compliance risk
+*Reputation damage
+***Critical rule:No meaningful business impact --> usually not an incident.***
+
+Example:
+*Port scan detected X (Technical only)
+*Port scan + exploited vulnerability + data access (Incident)
+
+#Why Not Every Alert Is an Incident:if every alert were an incident:
+*SOC would drown
+*Reponse team would burn out
+*Real incident would be missed 
+Most alert are :
+*False positives
+*Bening behavior
+*Misconfigurations
+*Expected admin activity
+***INcident are filted, validated alerts with impact.***
+
+One-line Summary (memorize this)
+
+Event → Alert → Incident
+Something happened → Something looks suspicious → Something bad is confirmed and matters.
+
