@@ -1,0 +1,46 @@
+#What is Syslog? it's:
+*A standard logging system in Linux
+*A central way services report events
+*Used locally and sent to remote logs servers (SIEM)
+Key idea: Programs don't usually write random files.
+they send messages -> Syslog -> Syslog writes them to log files.
+
+#Where Syslog Lives (very important)
+On most Linux systems: /var/log <-- the is the log directory
+Inside it, common syslog-related files:
+*syslog
+*Auth.log
+*kern.log
+*daemon.log
+today i will focus on : |syslog| and |auth.log|
+
+syslog vs auth.log (The core SOC distinction)
+/var/log/syslog
+it's like a :
+*General system activity*Services starting/stopping*Cron Jobs*Network services*Errors, warning, info*
+Example: SSH service restart, Networking interface up/down, A daemon crashing.
+
+/var/log/auth.log
+This is security gold ##
+contains: *Login attempts (success & failure)*sudo Usage*SSH authentication*user account actions*
+Example events: Brute-force attempts, user privilege escalation, Unauthorized access attempts
+
+SOC thinking Check (Important)
+Step 9 — Escalation thinking (SOC muscle)
+
+You never escalate on one line alone. You look for patterns.
+
+What an L1 checks next:
+
+Same IP repeated? 
+
+Multiple usernames? 
+
+Time window short? 
+
+Other hosts targeted? 
+
+
+
+
+

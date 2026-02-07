@@ -1,0 +1,25 @@
+Host & Application Logging.
+1.The Big Picture *The Why*.;
+ *Network logs: are the street cameras, they show connections
+ *Host Logs are the inside cameras, they show actions
+ *Correlation: is the bridge. You need both to prove if an attack actually worked.
+
+
+
+2.Knowledge Check: Log Sources
+Log Source         Primary Focus for SOC        Key Example
+Windows Security   Logins and Permissions       Failed password attempts (4625)
+Windows System     Health of the OS             System shutdown or driver failure.
+Linux auth.log     Authentication & Sudo        Brute-force or privilege escalation
+Web access         every click or URL request   High volume of 404s *scanning*
+Web Error          Glitches and Crashes         500 errors (Potential SQL Injection)
+
+3.SOC Thinking Patterns
+*Visibility Gap: if an attacker uses a USB drive, the Network log sees nothing, but the host log sees everything.
+*The Pivot: start with a Network alert (Computer A talked to a Malicious IP). then check host logs to see what process made that connection?
+*Success vs. Failure: a firewall might show an Allowed connection (Success) But the web error log might show 403 Forbidden (Failure at the app level).
+
+4.Critical Analyst Questions:
+*Did it work? Check host log for success codes "200 OK or successful login"
+*How did it happen? look for the process (like cmd.exe or powereshell.exe) that started that activity.
+Is it a pattern? Don't look at one line; look for high frequency (500 pages accessed in one minute).

@@ -1,0 +1,13 @@
+the different between Host and Network Correlation is like, the camera in street which's shows the delivery person, and the camera inside the house, shows someone opening the package.
+
+If i only look at the Network logs, i wouldn't know the package is a malware or a gift, but if i only look at system's log i wouldn't know who sent it.
+
+
+Where Should I start?
+1.The "Did It Work?" Check: Network logs often shout "attack!" like a firewall block or IDS alert, but that doesn't mean the computer was hacked.
+if we explore the host logs, it will prove if the attack failed or succeeded
+2.The "Who Started It?" Mystery: Someone you see a weird process running on a computer *HOST* like powershell connecting to the internet, we can look at how network logs help you find out where is it connecting and why.
+
+
+
+what i understand: the logs complete each other, any traffic happen, should be seeing though the logs, 
