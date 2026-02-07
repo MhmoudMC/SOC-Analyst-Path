@@ -1,0 +1,17 @@
+Phase 0 Review Checklist. We will look at how an event turns into an incident by focusing on these core areas:
+*The Flow: How an Event becomes an Alert, and finally an Incident.
+*The Analyst Mindset: Using the "Analyst Question Checklist" to investigate logs.
+*The Difference: Spotting False Positive vs. True Incident.
+
+Imagine you see an alert for "Multiple Failed Logins" (Event) followed by one "Successful Login" (Alert). You check the logs and see:
+*Source IP: 192.168.1.50 (An internal HR laptop)
+*Destination IP:10.0.0.99 (The main Finance Database)
+*Time: 4AM
+
+To officially finish this phase today, let's look at the "Analyst Question Checklist". When you see a suspicious alert, you should always ask:
+
+Is this expected? (Is it normal for this user/machine to do this?)
+
+What is the scope? (How many machines are involved?)
+
+What happened before and after? (Did we see a suspicious download before the lateral movement?)

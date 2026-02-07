@@ -1,0 +1,23 @@
+if a False positive is a false alarm, a True Positive is a real fire, you need to find "indicators" that prove an alert is actually a security incident. these are the "smoking guns" that tell you a human or a piece of malware is actually inside the network.
+
+
+Key Indicators of a True Incident
+*Unusual Administrative Activity: when a regular user account (Like someone in HR) suddenly tries to use "admin" commands or access a Domain Controller.
+
+*Data Exfiltration Signs: A sudden, large transfer of data to an external, unknown IP address, especially outside of work hours.
+
+*Lateral Movement: Seeing one computer try to connect to many other computers nearby using protocols like SSH or RDP (looking for a way to spread).
+
+*Persistence Mechanisms: New, strange files appearing in "Startup" folders or new tasks created to run every time a computer reboots.
+
+*Living off the land (LotL): Using legitimate tools (like PowerShell or Command Prompt) to do bad things, like downloading a file from a random website.
+
+#The "Analyst Mindset" for True Incidents. When you see these indicators, you stop looking at just one log. you start Host vs. Network Correlation.
+*Network: Did this IP talk to a bad website?
+*Host: Did that same computer run a suspicious .exe file at the same time?
+
+if both are "Yes," you likely have a True Incident.
+
+
+
+

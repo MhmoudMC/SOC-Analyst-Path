@@ -1,0 +1,20 @@
+1.THe Event (The Raw Data). An Event is just a record that something happened. it is natural, not good or bad yet,
+*SOC Context: A user logs in, a firewall allows a connection, or a file is saved.
+*analogy: The security camera records a student walking through the main door.
+*Volume: Huge. You might see millions of these a day.
+
+2.The Alert (The Warning), An Alert happens when an event (or a group of events) breaks a specific rule or looks suspicious.
+*SOC Context: A user fails to log in 10 times in one minute. the system flags this because it crosses a threshold.
+*Analogy: the camera system beeps because a student is trying to open a locked door at midnight.
+*Volume: Moderate. You might see dozens or hundreds a day.
+
+3.The Incident (The Real Problem). An Incident is an Alert that a human analyst(ME) has investigated and confirmed is a real threat that needs fixing.
+*SOC Context: You check the alert and see that after the 10 failed logins, the attacker successfully guessed the password and is now stealing files, this is now an Incident.
+*Analogy: The guard checks the camera, sees a thief breaking the lock, and calls the police.
+*Volume: Low, These are the critical moments that require immediate action.
+Stage,     What is it?,        Who handles it?,        SOC Action
+Event,     Raw Data,           The System (Logs),    Collect & Store
+Alert,     A Warning,          The SIEM / Tool,      Filter & Prioritize
+Incident,  Confirmed Threat,   You ( The Analyst),   Investigate & Fix
+
+
