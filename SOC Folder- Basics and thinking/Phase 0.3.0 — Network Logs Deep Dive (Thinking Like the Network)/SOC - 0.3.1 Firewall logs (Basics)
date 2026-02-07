@@ -1,0 +1,71 @@
+Phase 0.3.1 firewall logs basics.
+GOAL: REad a raw log line and instantly visualize the traffic flow in your head.
+
+1.The anatomy of a Firewall log.
+The fire wall logs is the same, someone tried to go there, i did "allowed/denied" to them.
+
+Every firewall log has these 4 pillars:
+Field                the question it answers   why it matter
+Timestamp            when                      context. was this at 3AM in sunday?:Suspicious:
+Source               who is knocking           the IP address originatig the traffic.:Is it internal or external:
+Destination (DST)    Where do they want to go  target server or user.:are they hitting the finance server or printer?:
+Port(Dst port)       Which door?               the service they want (80=web, 22=SSH, 3389=RDP)
+Action               What did the firewall do? Allow (Let in) or Deny/Drop (Bloked).
+
+#2.Allow vs. Deny (The Analyst't Dilemma):Neew analysts often get confused about which one is more important.Here is the rule of thump:
+
+
+*Deny Logs = Intent.
+**"Deny"tells you someone tried to do something they weren't supposed to.
+**Example: if you see 1,000 "Deny" logs from one IP trying to hit 1,000 different ports, the is Scanning. They didn't get in, but they are tryping to find an open door.
+**Why they matter:They are the "noise of the Internet." You will see millions. Your job is to spot the patterns in the noise.
+
+*Allow Logs = Impact (or Success).
+**"Allow" tells you traffic successfully passed through
+**Example:If you see an "Allow" log from a known bad Russian IP to your internal database on port 3389 (RDP), PANIC.
+**Why they matter: An "Allow" log on malicious traffic means the attack worked. The bouncer let the criminal into the club.
+
+
+
+
+Why "Deny" Logs often matter moer for Detection
+You asked why deny logs matter more.IN the Detection phase, Deny logs are your early warning system.
+*if an attacker tries to brute force a pasword, you will see flows being denied (or allowed if the firewall only cares about ports, but the application logs will deny)
+*Firewall Specific: if an infected laptop inside my network tries to talk to a "Command & Control" server (C2), the firewall might block it because of a "Bad Reputation"rule. That "Deny"log is the only clue you have a device is infected.
+
+
+#3.Reading a Raw Log (The "Matrix" Skill)
+let's look at a fake raw log (Similar to Cisco ASA or Palo Alt):
+Jan 17 10:49:01 FW-01 %ASA-6-302014: Teardown TCP connection 1934 for outside:192.168.50.5/4444 to inside:10.0.0.5/22 duration 0:00:30 bytes 0 (Deny)
+##**How a SOC Analyst read this:
+*1*Date: Jan 17 10:40:01 (Okay, current time)
+*2*Action: (Deny) (Okay, the firewall stopped it. We are safe for now)
+*3*Source:192.168.50.5 (Traffic came from the "outside")
+*4*Destination:10.0.0.5 (It tried to hit an internal server)
+*5*Port 22 (IT tried to hit SSH
+*6*Context: sone one from outside tried to ssh into an internal server, an the firewall blocked it.
+   *Is the an incident? Probably just internet noise (scanning)
+   *What if it was "Allow"? CRITICAL INCIDENT.An external IP just SSH'd into my server.
+
+#4.Thinking like the network: "The Direction"
+One specific detail that trips up beginners is Direction.
+*Inbound (Ingress):Internet --> My Company.
+  *Deny is normal. the firewall doing it's job blocking random internet noise
+  *Allow is scare. unless it's to a public web server.
+*Outbound (Egress): My Company --> Internet.
+  *Allow is normal. User browsing google
+  *Deny is suspicious. Why is the finance server trying to connect to a gambling site in north Korea?
+
+
+
+
+
+
+
+
+
+
+
+
+
+

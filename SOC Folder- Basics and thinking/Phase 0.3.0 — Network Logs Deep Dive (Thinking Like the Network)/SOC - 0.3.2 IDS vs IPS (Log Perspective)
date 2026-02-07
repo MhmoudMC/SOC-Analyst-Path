@@ -1,0 +1,138 @@
+#1.What is  IDS vs IPS (Log Perspective)
+SYSTEM          MEANING                          CORE JOB
+IDS             Intrusion DETECTION System       Observe & alert (نظام كشف التسلسل)
+IPS             Intrusion PREVENTION System      Observe, decide, block (نظام منع التسلسل)
+Key mindset shift:
+IDS : something suspicious happened.
+IPS : something suspicious happened, and i stopped it.
+
+#2.Placement matters (this explains the logs)
+*IDS placement 
+ *Out-of-hand(Mirror/Span port)
+ *Cannot block traffic
+ *Sees traffic passively
+ |Log consequence: IDS logs show what would have happened|
+*IPS placement
+ *Inline (traffic passes through it)
+ *Can drop / reset / block
+ *acts in real time
+|Log consequence: IPS logs show what was actively prevented|
+
+#3Log structure--What you actually see in SOC 
+Typical IDS log fields:
+Timestamp
+Source IP
+Destination IP
+Source Port
+Destination Port
+Protocol
+Signature Name
+Severity
+Action = ALERT
+Typical IPS log fields:
+Timestamp
+Source IP
+Destination IP
+Port
+Protocol
+Signature
+Severity
+Action = DROP / RESET / BLOCK
+**Critical difference:
+*IDS --> action: alert
+*IPS --> action: drop/reset
+This single changes incident priority
+
+#4.Signature vs Anomaly (this causes most false positive)
+**Signature-based detection (الكشف القاآم على التوقيع)
+*Matches known patterns
+*Example:
+  *SQL Injection
+  *Known exploit payload
+*High accuracy, low creativity
+|Logs look like: Signature: "ET DQL Injection Attempt"
+
+**Acomaly-based detection (الكشف القاىم على الشذوذ)
+*Detects behavior deviations
+*Example:
+ *Too many requests
+ *Weird traffic timing
+*More false positives.
+|Log look like: Anomaly Score: 92....... Baseline Deviation Detected|
+SOC truth:
+|Most noise comes from anamaly detection|
+
+#5.SOC Reality: Why IDS is noisy & IPS is dangerous
+IDS problems:
+**Alert on:
+ *Scans 
+ *Misconfigured apps
+ *Internal tools
+**High false positive rate
+IPS risks:
+**Can block:
+ *Legit traffic
+ *Business apps
+**A bad signature = outage
+SOC rule:
+|IPS signatures must be stricter than IDS signauters.
+
+#6.Decision logic-how SOC treats them.
+SCENSRIO                    SOC REACTION
+IDS alert only              Investigate Context
+IPS Block triggered         High priority
+Repeated IDS alerts         Correlate
+IPS blocking internal host  Escalate immediately
+
+##Example *thin like l1*
+Log 1 - IDS :
+Source: 45.33.10
+Dest: WebServer
+Signature: Port scan
+Action: ALERT
+👉 SOC thinking:
+
+Is this external?
+
+Is it repeated?
+
+Correlate with firewall denies
+
+log 2-IPS Event:
+Source: 45.33.10.9
+Dest: Webserver
+Signature:  SQL Injection
+Action: DROP
+
+👉 SOC thinking:
+
+Attack confirmed
+
+Was data accessed?
+
+Any app logs match?
+
+Incident candidate ⚠️
+
+#8.Mental Model. IDS = visibility, IPS = control
+IDS answers: Did I see something?
+IPS answers: DID i stop something?
+
+
+#9.Common SOC mistakes (avoid these)
+
+❌ Treating IDS alert = incident
+❌ Ignoring IPS logs because “it was blocked”
+❌ Trusting severity without context
+❌ Not correlating with firewall + web logs
+
+
+
+
+
+
+
+
+
+
+

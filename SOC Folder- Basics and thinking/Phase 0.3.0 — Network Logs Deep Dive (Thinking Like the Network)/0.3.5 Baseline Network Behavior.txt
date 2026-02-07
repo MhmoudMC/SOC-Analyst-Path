@@ -1,0 +1,20 @@
+What is baseline network behavior?
+A baseline is simple a picture of what is normal for my network.
+like in my routine, can't woke up at 5 or feels pain while running is abnormal.
+
+1.The Normal schedule (Time)
+*Baseline: most employees work from 9A.M. to 5P.M. Network traffic is high during these hours and low at 3A.M.
+*Anomaly(The Red Flag): a huge 10GB data transfer starts at 2A.M. from a computer that usually sleeps.
+
+2.The Normal Talkers (users & servers) 
+*baseline: your web server usually talks to database server and the internet. it never talks to HR manager's laptop.
+*Anomaly: suddenly, the web server is trying to ping every laptop in the office.(Scanning).
+
+3.The Normal Language (Protocols)
+*Base line: your network uses a lot of https and DNS
+*Anomaly: you see a lot of SSH (Remote control) traffic coming from a country where your company has no employees.
+
+How to Think like a Network Analyst:::;
+1.Have I seen this before ? (Frequency).
+2.Does this belong here ? (Context).
+3.Is the size or timing weird ? (Patterns).

@@ -1,0 +1,48 @@
+What is an "Alert Hypothesis"?
+a hypothesis is an educated guess. it means "I think a hacker might be doing [X] and if they are, i should see [Y] in the network logs.
+
+How to Build a Hypothesis :
+1.The Goal: what is the attacker trying to do (Steal data for example)
+2.The Behavior: How does that look on the network (Large upload file to unknown IP)
+3.The Log Source: where do i find the proof (Firewall, or web proxy logs, or windows event)
+
+3 Practical Examples for Today; since we are focusing on Network-Based alert, here are three common hypotheses you can practice:
+#1.The Internal scout (Scanning)
+*Hypothesis: if an attacker gets inside one computer, they will try to find other computers.
+*What to look for: One internal IP (Source) trying to connect to many different internal IPs (Destinations) On port 445 (SMB) OR 22 (SSH) in a short time
+*Log action: look for many "connection Denied" logs from the Firewall.
+
+#2.The phone home (Beaconing)
+*Hypothesis: malware on a computer needs to "Check-in" with the hacker's server to get commands.
+*What to look for: A computer sending a very small amount of data to the same outside IP address at exact regular intervals (Ever 5 minutes for 24 Hours for example)
+
+#3.THe Data Thief (Exfiltration)
+*Hypothesis: if someone is stealing a large database, the outbound traffic will lock different than normal web browsing.
+*What to look for: A single session where the Bytes Sent is much higher than the Bytes Received.
+*Log Action: Sort your firewall or Proxy logs by "Total Bytes out"
+
+Pro-Analyst Tip: "The Baseline"
+Before you can say something is a "threat," you must know what is "Normal" this is called a Baseline,
+Example :if your backup server sends 50GB to the cloud every night at 2 AM, that is Baseline
+Example :if a receptionist's computer sends 50GB to the cloud at 2AM, that is a Hypothesis for an Incident.
+1. The Hypothesis
+
+"If an attacker is trying to move from the HR laptop to the Finance Server (Lateral Movement), then I will see network traffic between two internal zones that normally never talk to each other".
+
+2. The Log Analysis (The "Deep Dive")
+You look at your Firewall Logs:
+
+Source IP: 10.0.1.5 (HR Laptop)
+
+Destination IP: 10.0.5.20 (Finance Database)
+
+Port: 445 (SMB - used for moving files)
+
+
+Action: Blocked 
+
+3. The "SOC Thinking" Result
+Why is this a good hypothesis? Because HR laptops usually talk to the Internet (Google, Email) or the HR Server. They have no business talking to the Finance Database.
+
+
+The Alert: Even if the firewall Blocked the traffic, the attempt tells you that the HR laptop might be infected and is "searching" for a neighbor to attack.
