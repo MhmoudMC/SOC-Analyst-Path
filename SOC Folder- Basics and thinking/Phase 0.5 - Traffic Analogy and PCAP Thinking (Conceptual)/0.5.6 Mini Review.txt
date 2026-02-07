@@ -1,0 +1,18 @@
+Phase 0.5 Review: Traffic & PCAP Thinking 
+
+#1. The "What" and "Why" of PCAPs
+*What is a PCAP?: It is a file containing a direct copy of data packets traveling across a network.
+*Packet vs. Session: A Packet is a single piece of data, while a Session is the entire "Conversation" (multiple packets) between two devices.
+*When to use it: You use PCAP analysis when logs don't give enough detail. logs tell you that something happened; PCAPs show you exactly how it happen.
+
+
+#2.Connection Patterns (TCP)
+*The Handshake: You must understand the SYN -> SYN-ACK -> ACK flow to know if a connection was successful.
+*Failure Patterns: If you see many SYN packets without an ACK, it might indicate a Scanning attempt or a server being down.
+
+#3.Identifying Attack Patterns.
+In this phase, we look for "shapes" in the traffic:
+*Scanning: One source IP trying to connect to many different ports or many different destination IPs in a short time.
+
+*Beaconing: A compromised computer "Checking in" with a hacker's server at regular intervals (like every 19 seconds).
+*Exfiltration: Sending a large amount of data out of the network, which often looks like a log session with a lot of "Upload" traffic.

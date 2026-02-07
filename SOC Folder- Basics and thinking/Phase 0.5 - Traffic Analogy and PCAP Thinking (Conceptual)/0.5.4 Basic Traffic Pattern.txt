@@ -1,0 +1,38 @@
+At this stage, we aren't looking at the data inside the packet (like reading a letter); we are looking at the behavior or the "shape" of the traffic (like watching how often the mailman comes)
+
+
+#Beaconing. In the network, Beaconing is when a computer makes a connection to the same destination at very regular intervals (time gaps). it usually malware checking in with an attacker's server to see if there are any new commands to run,
+
+List A;
+*09:00:00
+*09:05;05
+*09:10:01
+*09:15:00
+
+List B;
+*09:00:00
+*09:02:15
+*09:14:30
+*09:15:45
+
+at the first one, the time gap is almost 5 minutes exact, which's the Machine following a 300s clicking order from the attacker
+
+#Scanning. Imagine internal device connecting with 500 IP address, the malware is trying to see what else in the network, targeting high-value IPs like an admin computer, database server to spread further (Lateral Movement)
+
+
+
+#Exfiltration (Conceptual). Exfiltration is the "Grand Finale" for an attacker. they have found the data they want, and now they need to get it out of your house (the network) and into theirs. 
+
+imagine you are looking at the traffic for a workstation that usually sends about 10 MB of data to the internet per day. Suddenly, on a Tuesday night at 2:00 AM, that same workstation sends 50 GB of data to an unknown IP address in another country.
+
+Let's Review Phase 0.5.4 🏁
+We’ve covered:
+
+
+Beaconing: The rhythmic "heartbeat" of malware. 💓
+
+
+Scanning: The fast "door-knocking" to find other targets. 🔦
+
+
+Exfiltration: The "moving truck" taking data out of the building. 📦

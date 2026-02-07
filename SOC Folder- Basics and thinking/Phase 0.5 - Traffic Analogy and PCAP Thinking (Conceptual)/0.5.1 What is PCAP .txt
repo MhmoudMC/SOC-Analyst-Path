@@ -1,0 +1,26 @@
+0.5.1 What is PCAP? (Core Idea)
+
+Definition: PCAP (Packet Capture) is a file format that stores a complete, bit-by-bit record of network traffic.
+
+
+The "Security Camera" Analogy: * Logs are like a receipt: They tell you who bought what and when.
+
+
+PCAP is like a video recording: It shows you every single move made during the transaction.
+
+Key Contents:
+
+
+Headers: The "envelope" (Source/Dest IP, MAC addresses, Ports).
+
+
+Payload: The "actual letter" (The real data, text, or file pieces being sent).
+
+
+Why use it in a SOC? * Verification: To prove if an alert is a True Positive or a False Positive.
+
+
+Reconstruction: To see the actual commands an attacker typed or the files they stole.
+
+
+Deep Analysis: When network logs don't give enough detail to explain how an attack happened.
