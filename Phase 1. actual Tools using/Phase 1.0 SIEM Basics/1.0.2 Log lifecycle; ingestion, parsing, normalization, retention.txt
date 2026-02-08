@@ -1,0 +1,16 @@
+ Log lifecycle: The Journey of data,
+in this lesson, we look at piece of information (Like a login attempt) travels from a computer to your SIEM dashboard.
+
+#The four main stages:
+*Ingestion: its's the collection phase, siem pulls raw data from servers, firewalls, or apps,
+*Parsing: SIEM reads raw text and breaks it into pieces (User, IP, Time) using patterns like Regex
+*Normalization: Making different logs speak the same language. for example changing src and source address both to src_ip.
+*Retention: deciding how long to keep the data before it's deleted to save space.
+
+
+Main understand :
+Splunk Search Bar using like a command prompt like:
+// index="main" user="guest" | table _time, src_ip, status //
+index="main : search inside the main bucket
+user="guest" : status of user, if he was an admin or developer or guest
+table _time, src_ip, status : i think these are for telling splunk what it should show to me, 
