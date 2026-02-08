@@ -1,3 +1,5 @@
+# Python for Security Journey
+
 This repository documents my progress learning Python for cybersecurity and SOC operations.
 
 ## Current Focus
