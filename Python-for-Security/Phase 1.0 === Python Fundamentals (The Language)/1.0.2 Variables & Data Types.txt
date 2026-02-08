@@ -1,0 +1,22 @@
+we don't just print text, we need to store information like IP addresses, Port numbers, or Threat Levels so we can use them later in our script. we do this using Variables.
+
+A variable is like a labeled box, you put data inside it, and you gave the box a name.
+
+In python, we have different "types" of data:
+*String(str): Text, like an IP address "192.168.1.1"
+*Integer(int): Whole numbers, like a Port number 443.
+*Float: Numbers with decimals, like a "Chaos' level 0.85.
+
+How to create a Variable? You just give it a name, use the = sign, and then give it a value.
+*Variable name: ip_address
+*Assignment: =
+*Value: "192.168.1.1" (Don't forget the quotes for strings!)
+
+to make an string thing like {ip_address = 192.168.0.0} you have to add (") to 192.....
+to print different types of values, you have to make it like that :
+*{print("Alert: ... " + str(port_number))}. or like that :
+*print(f"Alert: Connection on Port {port_number}")
+
+
+
+

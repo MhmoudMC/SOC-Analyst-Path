@@ -1,0 +1,22 @@
+this isn't just normal math, we focus on "Context First". for soc analyst, math helps us calculate data transfer speeds or use Modulo(%) to understand networking patterns.
+
+
+The Modulo (%). the modulo operator gives you remainder (what is left over) after you divide.
+*Normal Division / : 10/3 = 3.33
+*Modulo % : 10%3 = 1
+  
+#why do we use this in SOC?  we use if for sampling and Networking.
+*Example: "I cannot check every log. I only want to scan every 5th packet."
+*Logic: if the Packet ID % 5 is 0. scan it.
+
+//Print(22 % 5)// the result is 2 
+
+
+##Applying it to your SOC Role:
+Imagine you are looking at a huge file of 1,000,000 logs. You want to create a "Baseline" (a normal look) of the traffic, but checking every single line is too slow. You decide to only pull every 100th line to get a sample.
+
+In a Python loop, we would use: //if log_number % 100 == 0://
+
+**if you use just / than it results in float number (5.0) but if you used // than its intger
+
+

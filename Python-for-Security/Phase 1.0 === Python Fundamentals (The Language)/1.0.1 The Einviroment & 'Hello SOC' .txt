@@ -1,0 +1,7 @@
+Usually in soc we works in Terminal (the black screen),to start coding, you need an environment where python can run, like VS Code or even simple text editor.
+
+#The 'print()' Function. the most basic, it tells the computer to show text in screen.
+We use this to show alert or status messages.
+
+(#) this is comment, we use it to explain the code, the computer ignores it.
+

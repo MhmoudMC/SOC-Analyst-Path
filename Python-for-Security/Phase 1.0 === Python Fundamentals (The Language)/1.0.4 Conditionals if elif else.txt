@@ -1,0 +1,30 @@
+The Logic of a Firewall. In SOC environment, you often compare data (Like an IP address or a port number) against a rule. to do this, we use Comparison Operators:
+
+*== (Equal to) *!= (Not equal to) *> (Greater than) *< (Less than)
+
+//
+port = 443
+if port == 443:
+    Print("Traffic is encrypted (HTTPS). Allow.")
+elif port = 80:
+    Print("Traffic is unencrypted (HTTP). Alert!")
+else:
+    Print("Unknown port. Block by default.")
+//
+
+build a program that launch critical alert to the analyst if the threat number was above 80, 
+and lunch normal alert if it was between 80 and 50,
+and mark the traffic as safe if anything else,
+
+//
+ip_address = 192.168.12.12
+threat_score = 65
+if threat_score>80 :
+    Print(f"Alert: That IP {ip_address} is critical, firewall blocked it automatecley")
+elif threat_score<50:
+    print("traffic isn't suspicious, connection allowed")
+else :
+    print(f"Alert, that IP {ip_address} is suspicious, the firewall didn't stop the traffic, recommendation: investigate + sandbox")
+//
+
+#Spaces are important here, after any : you should added 4 spaces or one TAP
