@@ -1,0 +1,14 @@
+What is a Log?
+In simple terms, a logs is a digital diary. its a record of everything happens on computer.
+a server. or a network device.
+
+*Why do we need logs? 
+*Evidence: They tell us exactly what happened in the past.
+*Visibility: They show us things we cannot see with our own eyes.
+*Troubleshooting: They help us find out why something broke.
+*Security: They help us catch "Bad actors" trying to break into the system.
+
+Example of a simple log:
+If you log into your computer, the system might create a line like this:
+"2026-2-8 10:00:1 | User: Ahmed | Action: Login | Status: Success"
+"If it isn't logged, it didn't happen." Without logs, we are "blind" to any attacks.

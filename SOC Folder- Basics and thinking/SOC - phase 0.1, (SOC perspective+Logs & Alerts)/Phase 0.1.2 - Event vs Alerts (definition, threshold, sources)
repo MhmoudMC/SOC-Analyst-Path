@@ -1,0 +1,32 @@
+Event VS Alert.
+Event:A timestamped factual record of something that occurred, without interpretation..
+Event Nauter:information, and happens in ultimtly high frequensey.
+Examples:
+*"client seccusfully log in" or 
+*"the Backing up completed" or 
+*"The cpu frequansy moved from %10 to %15"
+
+The Procedure (الاجراء): Event is written into a log for later correlation and investigation..
+
+Alert :
+A signal generated when one or more events match predefined detection logic indicating potential risk..
+The alerts says"That is important you have to complete."
+*The Nature: Procedural (actually required), and occurs at a low intensity (ideally).
+
+Examples:*Clinet failed to log in 20 times in a row.
+*the database server stop responding.
+*the cpu usage 99% for 10 minutes.
+
+Action: Alert → SOC L1 Review → TP / FP → Escalation (if needed)
+
+
+
+The compitations: Event                                     : Alert
+repet           : continued and very high                   : rare                                  .
+human entry     : usually not                               : requeid for analysis if               .
+goal            : Documentation and historical verification : To draw attention to a current problem.
+logic           : that happened in that time, bla bla       : if that happened, tell admistor       .
+| what i understand|
+the Event is like a processin the taskmanager or bar, tells what's happining.
+The Alert is like a the notification, it's something suspessus, tells you what happened. 
+My understand, the log is like a gaint chest, the event get saves inside of it. does every log have alerts? i don't know, but also i don't think, i think the SIEM *or what ever same* just takes the logs, connect the patterns, and esclating alert to SOC L1 to reviw, and soc should diced if it's a true positive or false positve.
