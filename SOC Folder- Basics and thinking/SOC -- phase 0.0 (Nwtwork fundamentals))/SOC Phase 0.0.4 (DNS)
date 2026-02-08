@@ -1,0 +1,15 @@
+DNS (Domain Name System) is a naiming service that translates domain names into IP addresses using A (IPv4) and AAAA (IPv6) records, and such ad CNAME, MX, and TX.
+
+A/AAAA; map a domain name to an actual IP address.
+CNAME: points one domain name to another domain name (alias).
+MX: defines where email messages should be delivered.|
+TXT : used for verification, policies, and metadata.
+
+
+WHY DNS IS IMPORTANT FOR SOC:
+Most malicious traffic eventually resolves to A or AAAA records.
+Command-and-Control (C2) servers require a real IP address.
+Malware may use CNAME records to hide the real destination, but it ultimately resolves to an A/AAAA record.
+
+
+SOC Note: Malware needs DNS to find its "boss" (C2 server).

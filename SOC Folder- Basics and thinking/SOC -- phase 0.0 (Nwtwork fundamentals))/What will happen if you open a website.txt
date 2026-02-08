@@ -1,0 +1,30 @@
+1.The DNS Request (The Phonebook)
+Your computer doesn't understand names like "google.com". it only understand IP addresses 
+(numbers).
+*Action: You browser asks a DNS Server, "What is the IP for this name?".
+*SOC Tip: If a user visit a malicious site, you will see the "query" for that site in the DNS logs.
+
+2.The TCP Handshake (The Greeting). Once your computer has the IP address, it needs to start a reliable connection. this is called the "Three-Way Handshake"
+*SYN: Your computer sys, "Hello, can we talk?"
+*SYN/ACK: The server says, "Hello! Yes, I am ready."
+*ACK: You computer sys, "Great, let's start!"
+
+3.The TLS Handshake (The Secret Code).
+Because most websites use HTTPS, they need to encrypt the data so hackers cannot read it.
+*Action: Your computer and the server agree on a "secret key" to lock the data.
+*SOC Tip: Since the data is encrypted, a SOC analyst usually cannot see the content of the traffic, only the destination and the size of the data.
+
+4.The HTTPS Request (The Order)
+Now that the connection is safe, you browser sends an HTTP GET request.
+*Action: it's like a customer in a restaurant saying, "Please give me the 'index.html' page."
+
+
+5.The Server Response (The Delivery)
+The web server receives the request and send back the files (HTML, images, CSS).
+*Action: Your browser takes these files and draws the website on your screen.
+
+#Why this matters for a SOC Analyst:
+If you see an alert for a "malware Download," you will look at these steps to find:
+*DNS Logs: Did the user look for a known bad website?
+*Firewall Logs: Did the connection actually happen (was the handshake successful)
+*Web Logs: Exactly what file did the server send to the user?
