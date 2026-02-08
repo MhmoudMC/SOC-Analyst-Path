@@ -1,0 +1,23 @@
+I installed the Splunk Enterprise, 1.1 GB installfile
+after i download it, i pressed install. and it asked me about the user name, and password.
+i typed them, and after a while the desktop start ploring, 
+that is a test dacuamnt, not the official Phase 1.0.1 
+
+installed already, 
+
+
+#In pytbon, variables store data, in splunk, the Indexer stores data.
+*The Indexer: The database where logs are stored.
+*The Search Head: The web interface where you write queries.
+#Why does this matter? if splunk gets slow, it's usually because the Indexer (My hard drive) is busy. if the website doesn't load, the search Head service is down.
+
+##The "Hello SOC" test.
+1.Click on Search & Reporting (the green icon).
+2.In the search bar, type exactly this: index=_internal
+3.Set the time picker (Right of the search bar) To Last 15 minutes.
+4.Click The Magnifying Glass
+
+###Update:
+*Status: License switched to FREE
+*Test Result: index=_internal gave me a results, which's mean splunk work fine and healthy
+*Username/Password: in mind, 
