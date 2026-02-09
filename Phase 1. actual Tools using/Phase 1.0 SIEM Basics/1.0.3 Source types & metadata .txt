@@ -1,0 +1,26 @@
+When logs arrive in a SIEM, they aren't just a pile of text. The system attaches Metadata—information about the data—to help you search and filter.
+
+1.Host : the host is the name of the machine or device where the log started.
+*Example: Workstation-01, Firewall-Core, or Web-Server-01
+*Analyst Use: IF you see a virus alert, the host tells you exactly which computer is infected.
+
+2.Source : The Source is the specific file or path where the log lives on the host.
+*Example: /var/log/auth.log (on Linux) or WinEventLog:Security (on Windows)
+*Analyst Use: this helps you track down the specific application or service that created the log.
+
+
+3.Sorce Type (Sourcetype) : is the most important one. it tells the SIEM what kind of data it is so the SIEM knows how to formate it.
+*Example : syslog, cisco:asa, access_combined (for web logs)
+*Analyst Use: When you search by "sourcetype", the SIEM automatically breaks the log into fields like "src_ip", "user", and "action"
+
+4.Index : it's the physical "bucket" or database where the data is stored.
+*Example: index=network, index=windows, or index=main.
+*Analyst Use: Searching by index makes you queries much faster because the SIEM doesn't have to look through every single log you own.
+
+5.Tags : are the custom nicknames you give to data to make it easier to remember.
+*Example: You can tag any log coming from your AI Marj office aa location=Libya.
+*Analyst Use: you can search tag=critical_servers instead of 50 different IP addresses.
+
+##What i understand from that lesson ?
+Knowing Source type & metadata making you search by type way, using it, you can see what you are expecting every time with different ways and places . 
+

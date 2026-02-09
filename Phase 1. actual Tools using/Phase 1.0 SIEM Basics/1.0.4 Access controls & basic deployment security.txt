@@ -1,0 +1,17 @@
+In the SOC world, we don't want everyone to see everything. Just like a bank has different keys for different rooms, a SIEM uses RBAC (Role-Based Access Control) to keep data safe
+
+1.What is RBAC?, RBAC means giving permissions based on a person's job.
+*Admin: Can do everything (delete data, change settings)
+*Analyst: Can search data and create alerts, but cannot delete logs.
+*User/Manager: Can only see dashboards and reports.
+
+2.Why is this important ?
+*Privacy: A regular employee shouldn't see HR's private emails or salary logs.
+*Integrity: You don't want a hacker who gets an analyst\s password to be able to delete the evidence of their attack.
+*Compliance: Many laws require that you track who looked at what data.
+
+3.Basic Deployment security, when open splunk or ELK (they called SIEM) you must follow these Ground Rules:
+*Strong Passwords: Never leave the default "admin:changeme" password.
+*Encryption (SSL/TLS): Ensure the data moving from the "Host" to the "SIEM" is encrypted so no one can "sniff" it on the network.
+*Least Privilege: Only give people the minimum access they need to do their work.
+
