@@ -1,0 +1,24 @@
+Think of a List like a notebook where you write down a sequence of items, such as a "Blacklist" of IP addresses.
+
+1.What is a List?, A list is a way to store multiple items in a single variable.
+In python, we use square brackets ([]) to create them.
+
+//# A list of bad IP addresses (The "Blacklist")
+bad_ips = ["192.168.1.50", "10.0.0.7", "172.16.0.25"]//
+
+2.Indexing: Finding the Position,
+Every item in a list has a "seat number" called an Index.
+In python, start counting at 0, not 1 (Like java)
+
+*How to use it in code:
+//#To get the first IP in your list:
+print(bad_ips[0]) #Result: 192.168.1.50
+
+3.Basic List Actions for a SOC Analyst
+You often need to change your list as new threats appear.
+*Adding an IP: Use ".append()" to add a new threat to the end of your list.
+//bad_ips.append("1.1.1.1")//
+changing an IP: If you made a mistake at index 1, you can overwrite it.
+//bad_ips[1] = "10.0.0.11"//
+*Checking Length: Use "len()" To see how many bad IPs you are tracking.
+//print(len(bad_ips)) # Tells you the total count//
