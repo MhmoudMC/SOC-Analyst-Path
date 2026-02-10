@@ -1,0 +1,87 @@
+In a SOC, you almost never check just one IP address or one log file. You have to check thousands. If you had to type code for every single IP, you would never finish.
+
+1.The //For// Loop (The scanner) #Use_This_When: you have a list of things (Like bad ips) and want to touch every single one of them.
+
+*Logic: "For every IP in this list, check if it is safe"
+*SOC Example: Scanning a list of suspects.
+
+//# A list of suspicious IPs found in a log
+suspect_ips = ["192.168.1.105", "10.0.0.22", "172.16.5.1"]
+
+print("--- Starting Scan ---")
+#The For Loop
+for ip in suspects_ips:
+    print(f"Scanning IP: {ip} ...")
+   # In real life, you would add code here to check a data base
+   if ip == "10.0.0.22" :
+       Print(">> ALERT: Maliccious IP found!")
+
+print("--- Scan Complete ---")
+
+#what i understand: it create new variable, and in the "if" function, it try the if function on every slot (Index) inside the if, it's like a searching tool rather than
+loops tool, *#Important: it scans every item in the list, even if the if function mathc*
+
+In the SOC, we use while when we want a script to never stop until a specific security event happens.
+
+#The "Live Monitor" (While Loop). imagine you are waiting for a specific hacket IP to try and log in. you don't know when he will try-maybe in 5m or 5h, you need a loop that stays alive.
+//# Logic: Keep watching until the intruder is found
+intruder_ip = "192.168.5.50"
+detected = False
+
+print("System: Monitoring live traffic...")
+
+while detected == False:
+    # In a real SOC, this 'current_connection' would come from Splunk or a log file
+    current_connection = "172.16.0.5" 
+    
+    print(f"Checking connection: {current_connection} ... [SAFE]")
+    
+    # If we find the intruder, we change 'detected' to True to STOP the loop
+    if current_connection == intruder_ip:
+        detected = True
+        print("!!! ALERT: INTRUDER DETECTED !!!")
+    
+    # Just for this example, let's pretend the intruder joined
+    current_connection = "192.168.5.50"
+    if current_connection == intruder_ip:
+        detected = True
+        print(f"!!! ALERT: {current_connection} is here! Stopping Monitor. !!!")
+//
+
+
+Why use while instead of for?
+
+for loop: Use it when you have a list of IPs and you know exactly where it ends (e.g., "Scan these 10 IPs"). 
+
+
+while loop: Use it when you are waiting for a condition to change (e.g., "Keep running while the CPU is under 90%" or "Keep running until the Firewall blocks the IP").
+
+The "Infinite Watcher"
+In professional SOC tools, we often use while True:. This means "Run forever."
+
+while True:
+    print("Watching logs for attacks...")
+    # This script will run 24/7/365 unless the server explodes or you hit Ctrl+C
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
