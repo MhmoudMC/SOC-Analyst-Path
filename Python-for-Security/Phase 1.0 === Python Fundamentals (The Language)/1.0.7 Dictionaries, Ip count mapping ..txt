@@ -1,0 +1,49 @@
+In Python, a Dictionary is like a database in your pocket. It stores information in Key:Value pairs. For a SOC analyst, this is the perfect way to map an IP address to the number of times it tried to log in.
+
+The IP Mapping Logic: think of a dictionary like a real-life dictionary: you look up a "Word" (The Key) to find it's "Definition" (the Value).
+*Key: Tehis must be unique (Like a specific IP address).
+*Value: This is the data connected to that key (like the count of failed logins).
+
+*Example Code://
+# Creating a dictionary of suspicious activity
+# Key = IP Address, Value = Number of failed attempts
+login_attempts = {
+   "192.168.1.10" : 3,
+   "10.0.0.5" : 22,
+   "172.12.0.1" : 1
+}
+# How to see the count for a specific IP 
+print(login_attempts["10.0.0t"]) # Output : 22
+
+Why this matters for you:
+Instead of searching through a long list, a dictionary lets you instantly find out if an IP is attacking your system. You can even use it to create a Frequency Analysis—the foundation for the Pandas work we will do later.
+
+The Pure Logic Difference
+Think of it this way:
+
+
+A List is a "Queue": It is just a line of items. You only know where someone is in line (Position 0, 1, 2). It doesn't tell you anything about the item itself.
+
+
+A Dictionary is a "Database": It links two pieces of information together forever. It says: "This specific thing (Key) belongs with this specific data (Value)."
+
+
+
+Fearure          List (The Box)                  Dictionary (The Map)
+
+Logic           "Here is a bunch of stuff."     "Here is a label and its data."
+
+finding Data     You must look through           You look at the label(Key) 
+                 the whole box.                  and get the answer instantly.
+
+Networking       A list of active ports          A mapping of Port Number to Servers 
+                                                 to Service Name (80: "HTTP").
+
+s
+    
+
+
+
+
+
+
