@@ -1,0 +1,19 @@
+The Concept: The "Mailman" of the SOC
+Imagine you have 1,000 servers. you cannot log into each one every day to cope a text file
+*The Universal forwarder (UF): this is a tiny piece of software installed on the "Client"
+(the computer generating the logs). it acts like a mailman.
+*The Job: it watches a specific file. When a new line is written to that file, the UF immediately grabs it, wraps it up, and sends it to your Splunk Indexer (usually on port 9997)
+
+The UF is very simple. It only cares about two things, which are defined in .conf files:
+1, inputs.conf(The "What"): This tells the UF which files to watch.
+  *Example: [monitor://c:\FakeLogs\*,txt] - Watch every text file in this folder.
+
+2, outputs.conf(The "Where"): This tells the UF where your Splunk server is.
+  *Example: server = 192.169.1.50:9997 - send everything to this IP address.
+
+#Objextive: Draft a valid inputs.conf stanza to monitor the Fake Logs folder.
+Reference Material (Syntax):
+[monitor://<Path_To_Your_File]
+disabled = 0
+sourcetype = <Your_Sourcetype_Name>
+index = <Your_Index_Name>
