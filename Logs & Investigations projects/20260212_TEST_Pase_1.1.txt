@@ -1,0 +1,76 @@
+
+This test covers the topics from my plan: log formats, forwarders, parsing(Regex/JSON), and normalization.
+
+Part A: Theory (Short Answer)
+Q1. Log Formats, You have two logs.
+
+*Log A looks like this: {"timestamp": "2026-02-12", "user": "admin", "action": "fail"}
+
+*Log B looks like this: Feb 12 10:00:00 host1 sshd[123]: Failed password for admin
+Which one is JSON and Which one is Syslog? Why is JSON usually easier for a SIEM to read?
+
+Answer: the first one/ it's easier cause it uses key-value technique.
+
+
+Q2. The Forwarder. In a SIEM architecture (Like Splunk or ELK), what is the specific job of  a Forwarder (or Filebeat)? Does it usually store the data forever, or just send it?
+
+Answer: it takes different logs from different applications/ it's just send it.
+
+Q3. Normalization. Imagine you have a Windows log that say "SourceAddress : 10.0.0.1 
+and a Firewall log that says "src_ip: 10.0.0.1. why is it important to rename both fields to just one standard name like src_ip inside your siem?
+
+Answer: To make search more easier and clean so the analyst could focus on what matter the most.
+
+
+Part B: Applied Parsing (The "Regex" Thinking)
+Q4. Extracting Fields Look at this raw Apache web server log: 192.168.1.59 - - [12/Feb/2026:14:32:00 +0000] "POST /login.php HTTP/1.1" 403 1024
+
+Answer: 1.Clinet IP: 192.168.1.50
+2.HTTP Status Code: 403 1024
+3.Timestamp: 12/Feb/2026:14:32:00 +0000
+
+Part C: Lab Check (Practical)
+
+Q5. The Practical Requirement According to your plan for Phase 1.1, you must perform a specific practical task before moving to Phase 1.2.
+*Have you installed a Forwarder/Agent? Answer: i think installing splunk comes with it already, unless you meant {uploading fake logs files}
+*Have you ingested one host log and one firewall dataset? Answer: yes, AI created an Inident logs, and i completed it, almost perfectely, the only bad side was my English, it looks like i was talking casually rather than excalation language, but Investigation was brettey good.
+*Did you confirm the timestamps are correct? Answer: actually, yes, timing was always important, like imagine that :
+User change passward at 12 Feb,
+Failed login at 13 Feb 12:34
+Successful login at 13 Feb 12:36 
+Failed login at 14 Feb 12:15
+Successful login at 14 Feb 12:17 
+{normal gey, keep forgetting he changed the password each time}
+but without timestamps ?
+SIEM wouldn't orginize it currecely, than it would look like
+
+failed login, 
+failed login,
+failed login, 
+successful login,
+change password,
+
+{see, now it looks like a Brute-Force}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
