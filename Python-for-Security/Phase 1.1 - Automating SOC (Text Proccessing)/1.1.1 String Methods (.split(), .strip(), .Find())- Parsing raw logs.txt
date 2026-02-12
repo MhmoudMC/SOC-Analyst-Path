@@ -1,0 +1,54 @@
+In this phase, we focus on Text Processing. As a SOC analyst, your "enemy" is often messy data. Logs are just long lines of text (Strings), and your job is to find the bad guy hiding inside them.
+
+example :
+//raw_log = "    Failed Login from 192.168.50.5      "
+
+do you see the empty spaces at the very beginning and the very end? we call that whitespace. computer hate whitespace because it makes data look different than it really is.
+
+
+#Tool 1: .strip() ; this too cleans the "mess" from the edges. it removes the spaces at the start and end.
+
+//clean_log = raw_log.strip()
+# Result : "Failed login from 192.168.50.5"
+//
+
+
+#Tool 2: .split() ; we have clean sentence, but we want the IP address specifically. it cuts the string into a List of individual words.
+// #usage: variable.split()
+words = clean_log.split()
+print(words)
+//
+words is now a list!! that looks like this : ['failed'. 'login', 'from', '192.168.50.5'].
+
+#Tool 3: .find() ; sometimes you don't need to chop up the whole log line, you just want to know "Is there a failure here?"
+the .find() method searches for a specific substring and tells you the index number where it starts. if it doesn't find it, it returns -1.
+// log_line = "Failed Login from 192.168.50.5"
+index = log_line.find("Login")
+print(index)
+#Output: 7 (because "Login" starts at the 8th character) 
+
+
+
+#Tool 3: .replace() ; this tool is perfect for "cleaning" or "masking" data. As a SOC analyst, you might want to hide a real IP address before sharing a report
+
+//log = "Threat detected from 192.168.50.5"
+safe_log = log.replace("192.168.50.5", "[MASKED_IP]")
+print(safe_log)
+# Output: Threat detected from [MASKED_IP]
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
