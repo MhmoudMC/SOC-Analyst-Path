@@ -6,7 +6,7 @@ This respository documents my progress learning multiable tools, ways of thinkin
 - Learning thinking first
 - Learning using tools
 - personality
-- businessimpact
+- business impact
 
 ## Goal
 Use the SOC Analyst personality to work for AI Security Engineer.
