@@ -1,0 +1,17 @@
+you know that logs come from many different places—firewalls, Windows servers, and Linux boxes. The problem is that they all speak different "languages." For example, one might call a user user_name, while another calls it UserID.
+
+
+Field Normalization: is the process of making these different names the same across your SIEM like Splunk or ELK. We use Canonical Fields (standard names) so that your queries work no matter where the data comes from.
+
+Why this matters. 
+*Unified Searching: You can search for src_ip and see the result from Firewall, IDS, and web Server all at once.
+*Faster Detections: Your detection rules don't need to be rewritten for every new tool you add.
+*Better Dashboards: Your "Top Attacked Users" dashboard will be accurate because it counts "user" instead of three different field names.
+Common Canonical Field Examples:
+
+Source Field (Original)               Canonical Field (Normalized)
+src, source_ip, ClientIP              src_ip
+dest_port, dst_pt, DestinationPort    dest_port
+action, status, event_result          action
+
+
