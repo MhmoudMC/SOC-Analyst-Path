@@ -1,0 +1,25 @@
+#What is Parsing? is the process of taking a "raw" log message (which is just a long string of text) and breaking it into organized pieces called fields.
+
+#Mains: 
+1.Regex (Regular Expressions) : these are special search patterns, used to find specific text. a regex can find an IP address or username inside a messy log file.
+2.Key-Value Extraction : Some logs are already organized like 'user=ahmed', 'status=success'. parsing tells the SIEM to automatically recognize that user is the key and ahmed is the value.
+3.Timestamp Handling : Every event in security needs a time. we must tell the SIEM exactly where the date and time are in the log so it can put events in the correct order on a timeline.
+
+Why do we need Regex ? 
+logs are often messy. for example : raw firewall log: "2026-02-12 08:00:01 SRC=192.168.1.50 DST=10.0.0.5 ACTION=BLOCK"
+TO a SIEM, this is just one long sentence, we use Regex to tell the SIEM:
+*Everything after SRC= is the Source IP.
+*Everything after Action= is the Result.
+
+Key-Value Extraction. some logs are easy because they already look like this:
+"userID=12345 ip=1.1.1.1 action=login"
+in splunk or ELK, the engine can often see the = sign and automatically create the fields for you without much Regex.
+
+Timestamp Handling:
+
+Timestamps are the most critical part of a log for a SOC analyst. Without an accurate time, we cannot build a timeline of an attack. SIEMs need to know:
++2
+
+Where the time is in the log.
+
+What format it is in (e.g., Day-Month-Year or Year-Month-Day).
