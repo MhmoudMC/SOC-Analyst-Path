@@ -1,0 +1,95 @@
+This is a critical skill for a SOC analyst because almost all logs (firewall logs, server logs) are just simple text files
+
+The Concept: The "Book" Analogy. Think of a text file like a physical book, to git info from it, you have to follow three steps in order:
+1.Open the book, 2.Read the page (or Write a note in it), 3.Close the book
+
+Step 1: Opening the File, In python, we use the open() function. But we have to tell Python why we are opening it.
+Are we just looking, or are we changing things?
+
+We use "modes" for this:
+*"r" = Read. You can look, but you can't touch (Safe for evidence).
+*"w" = Write. This wipes the file clean and starts fresh. (Dangerous of original logs!)
+*"a" = Append. This adds new lines to the end of the file without deleting the old ones.
+
+Step 2: Reading the data. There are three main ways to read the "Books" in python:
+1. '.read()': Reads the entire book at once. this is fast but can crash your computer if the log file is huge "Like 10GB"
+2. '.readline()': Reads just one line at a time. it's like reading one sentence, then stopping.
+3. '.readlines()': Reads the whole file puts every line into a List!.
+
+/, .readlines() is very popular for SOC analysts. It turns a file into a list of "IP addresses" or "Events" that you can loop through/
+
+//# 1. Open the file in Read mode
+my_file = open("whitelist.txt", "r")
+
+# 2. Put every line into a List
+all_lines = my_file.readlines()
+
+# 3. Print the list to see what we got
+print(all_lines)
+
+# 4. Close the file (Important!)
+my_file.close()
+//
+
+
+step 2: Writing (The "Report" Phase), sometimes, you find a bad "Bad IP" and you want to save it to a new file called 'alerts.txt'
+
+
+we use the mode 'a' Append so we don't delete old alerts.
+//#Open the file in Append mode
+report = open("alerts.txt.", "a")
+# Write a message
+report.write("Alert: Unauthorized access detected!\n")
+# Close it to save changes
+report.close()
+
+#The "With" Keyword (The Pro Way)
+Professional SOC analyst usually don't use f = open(). they use a block called with. 
+the best thing about with is that automatically closes the file for you, even if your code has an error.
+//with open("logs.txt", "r") as f: 
+      data = f.read()
+# No nead for f.close() here!, It closes by itself.
+
+Summary of Models for SOC Work
+Mode     Name         What it does to your Evidence
+"r"      Read         Safely looks at the logs without changing anything.
+"w"      Write        Deletes everything and starts a new file.
+"a"      Append       Adds new data to the bottom of the existing file.
+
+#What i Understand:
+using models is like clicking the view or delete or admin button, each one of them open the application or the file in different way,
+# Part 1: Read the logs
+with open("server_logs.txt", "r") as log_file:
+    all_logs = log_file.readlines() #this change the file into list.
+
+# Part 2: Filter and Save
+# We use "a" to append so we don't delete old alerts.
+with open("suspicious_activity.txt", "a") as report:
+    for line in all_logs:
+        # Check if the word "Failed" is in this specific line
+        if "Failed" in line:
+            # Write that line into our report file
+            report.write(line)
+
+	    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
