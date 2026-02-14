@@ -1,0 +1,35 @@
+The Core Concept: The Pipeline (|) the most important thing in splunk is theat pipe symb:
+think of it like a factory assembly line or a water filter:
+1.Raw mud goes in (your raw logs)
+2.Filter 1 removes the big rocks (this is your search command)
+3.Filter 2 cleans the water (this is your parsing or pulling)
+4.Bucket collects the clean water (this is your stats counting)
+
+Every time you use |, you are taking the result from the lift side and passing them to the right side to do something new.
+
+The First 3 Commands:
+1.search: it finds things, it filters the mud "index= main error" (look in the main box and find any log that has the word 'error')
+2.stats: it uses math to count or group things " | stats count by src_ip" (take the results, count them, and group them by the Source IP address)
+3.eval: it creates a new field or calculates something "| evel is_bad="yes"" (make a new field called 'is_bad' and set it to 'yes' for every event)
+
+What i understand:
+this like the option in youtube "except the rex, it's advanced"
+and these filter, count, and you can highlight using "where > 2"
+
+What i did :
+using the current knowledge i have, i successfully found the bad or SUSPICIOUS ip, 
+
+What i used:
+sourcetype="fake logs" #focusing on my fake logs. 
+| rex "outside:(?<src_ip>\d+\.\d+\.\d+\.\d+)" # that shows src_ips 
+| search "Deny" # looking for the Deny action in the firewall event.
+| stats count by src_ip # It counts how many times it connected and denied
+| where count > 1 # the threshold is so low cause it's fake logs, in real incident, it will be like 8~ .
+
+What i tried to do:
+when i tried to remove the Deny action, it shows other external ip's that connected, even though they have denied from firewall, 
+it showed 185.220.101.4 (Denied 2 times)
+and 203.0.113.5 (that didn't shows last time, and if i searched manually, i will find 4 successful connections)
+
+
+
