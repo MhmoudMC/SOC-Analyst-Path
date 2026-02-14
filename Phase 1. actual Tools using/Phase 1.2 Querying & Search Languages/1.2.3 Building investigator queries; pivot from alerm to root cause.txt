@@ -1,0 +1,71 @@
+This is one of the most important skills for a SOC analyst. We call it "Pivoting."
+
+the analyst see an alert, he uses it to find the person or the malware.
+
+In a SIEM (like Splunk 0r ELK), we pivot using fields like:
+*Source IP (src_ip)
+*Username (user)
+*Hostname (host)
+*Filename (file_name)
+
+1.The "Time-Window" Search, time is my most important anchor.
+if an alert start at 10:00:00 AM, searching "All Time" is too noisy, and searching only that exact second might miss the cause, we usually create a "Search Buffer" around the event.
+*Look Back: Check 5-10 minutes before the alert to find the "Infection Vector" (Like a web download or an email attachment being opened)
+*Look Forward: Check the minutes after the alert to see if the malware started talking to a Command & Control (C2) server or encrypting files.
+
+In splunk or ELK, you can use the time picker or specific syntax (Like earliest=-10m@m latest=+5m@m) To lock your view to this window.
+
+#Important: in cybersecurity, we use a Hash (like SHA-256 or MD5)
+*A hash is like a fingerprint or DNA for a file
+*If I take a piece of malware and rename it from virus.exe to chrome.exe, the name changes, but the hash stays exactly the same.
+
+If you find a suspicious file, you can take its hash and search for in in SIEM.
+
+Step 2. The "Process Tree" Pivot
+Now that we know what the file is (using the hash) and when it arrived (using your time-window method), we need to see who started it.
+In windows every program is started by other program (a "Parent")
+*Normal: chrome.exe (Parent) -> downloads -> installer.exe (Child)
+*Suspicious: outlook exe. (Parent) -> starts -> powershell.exe (Child).
+
+3. The "Lateral Movement" Check
+Lateral Movement is when attacker gets inside one computer (Like the HR laptop) and then tries to jump to other computers like server or ceo's laptop to find better data.
+
+To find this in SIEM, you pivot using the Source IP of the infected machine.
+*The Logic: if we know 10.0.0.55 (the HR laptop) is infected. we search all network logs when src_ip="10.0.0.55".
+*WHat to look for: Is that laptop suddenly trying to connect to a database it never touched before? Is it trying to "Log in" to 50 different computers in 1 minute?
+
+Summary of 1.2.3: The Investigator's Toolkit
+By combining these three, you become a high-level SOC analyst:
+
+
+Time-Window: You find when it happened.
+
+
+Process Tree: You find how it started (The Parent).
+
+
+Lateral Movement: You find where the attacker went next.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

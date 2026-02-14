@@ -1,0 +1,8 @@
+2. Your Search Task:
+Look at the firewall logs in Fake Logs..txt and find the following:
+
+What is the External IP address trying to connect to port 22?
+
+Was the connection Built or Denied?
+
+What is the Internal IP they were trying to hit?
