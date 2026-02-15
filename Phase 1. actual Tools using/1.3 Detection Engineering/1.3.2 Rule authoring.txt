@@ -1,0 +1,12 @@
+in this lesson, we are going to learn how to write detection rules.  it's a skill for soc analyst cause it makes SIEM automatically find bad things happening in the logs.
+
+Step one: The Hypothesis. is just a smart guess about what an attack look like in the log.
+*Example: "I believe that if an IP address has more than 10 failed login attempts in 5 minute followed by 1 successful login, it might be a successful brute force attack."
+
+Step two: In Splunk, we use SPL (Search Process Language) to find this, we look for :
+*action="failure" or status=401 (to find the fails)
+*stats count by user, src_ip (to group them together)
+
+step three: Rule Logic & Thresholds, for a brute-force detection, we can't just look for one failure. we use Threshold. if we see 20 failures from one src_ip targeting one user within a 5-minute window, we want an alert.
+
+step fur: adding the Threshold,  On Splunk, we use 'where' command to filter our calculated results.
