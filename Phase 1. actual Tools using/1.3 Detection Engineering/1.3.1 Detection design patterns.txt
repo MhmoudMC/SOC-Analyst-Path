@@ -1,0 +1,18 @@
+Think of a Design Pattern like a "recipe" for cooking. in security, we don't need to invent a new trap for every single hacker. most hackers behave in similar way, so we use standard "recipes" (Patterns) to catch them.
+
+the most common patterns used in soc :
+1.The "Counter" Pattern (Thresholds)
+*Best for: Catching brute force or Failed logins.
+*How it works: We count how many times something happens in a short time
+
+
+2.The "Sequence" Patterns (Chain)
+*Best for: Catching Privilege Escalation or complex attacks.
+*How it works: We look for Event "A" followed immediately be Event "B" (like, user create a new account, and then deleted the logs)
+
+
+
+3.The "Volume" Pattern (Spikes)
+*Best for: Catching Data Exfiltration.
+*How it works: We look for a sudden, huge increase in data size (this compute usually sends 5MB, but today it sent 5GB)
+
