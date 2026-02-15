@@ -1,0 +1,71 @@
+
+In a SOC environment, logs are rarely all in one folder. They’re scattered across directories by date, host, or service. You need to programmatically walk through these folders to find the right files. Python’s built-in os module gives you the tools to interact with the file system.
+
+why 'os' instead of manual browsing?
+*scale: Thousands of log files- too many to open by hand.
+*Automation: Scripts can crawl directories and pick only the files you need.
+*Integration: you can combine 'os' with 're' (regex) later to search inside the files.
+
+
+
+
+Key os functions for directory navigation
+Function                 	What it does
+
+os.listdir(path)	        Returns a list of all files and folders in path.
+
+os.path.join(path, file)	Safely joins path components (works on Windows/Linux).
+
+os.path.isfile(path) / isdir()	Checks if a path is a file or directory.
+
+os.walk(top)	                Generates file names in a directory tree   
+                                (Walks recursively)
+                            
+Example1://import os
+log_dir = "/var/log"
+for item in os.listdir(log_dir):
+    full_path = os.path.join(log_dir, item)
+    if os.path.isfile(full_path):
+        print(f"Log file: {full_path}")
+Example2:// import os
+target_ext = ".log"
+for root, dirs., files in os.walk("/var/log"):
+    for file in files:
+        if file.endwith(target_ext):
+            full_path = os.path.join(root, file)
+            print(f"Found log: {full_path}")
+*root = current directory path
+*dirs.  = list of subdirectories (you can modify this list to prune the walk)
+*files = list of files in 'root'
+Example3://import os
+def find_logs(start_path,externsion=".log"):
+    log_files = []
+    for root, dirs, files in os.walk(start_path):
+        for file in files:
+            if file.endwith(extension):
+                log_files.append(os.path.join(root,file))
+    return log_files
+logs = find_logs("/var/log")
+print(f"Total log files: {len(logs)}")
+
+SOC context: why it matters
+*Incident response: Quickly locate all logs containing a certain IP across multiple servers.
+*Daily checks: Automatically gather the latest log files from a network share.
+*Log rotation handling: Some logs are gzipped after a certain size-you can use 'os' to detect and decompress them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
