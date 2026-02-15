@@ -1,0 +1,24 @@
+this is a skill, it important because it reduce the alert fatigue that causes analysts to miss real threats.
+
+The Problem: To Much Noise, imagine you have a rule that detects Failed Logins.
+*Scenario: A user's keyboard is broken, and they type their password wrong 50 times in 1 minute.
+*Bad Result: Your SIEM fires 50 separate alerts. you have to close 50 tickets.
+*Good Result: You get ONE alert saying "50 Failed logins observed."
+TO get the good result we use Tunning.
+
+Key Tuning Concepts: here is the difference between the three main methods:
+
+
+Method        Simple Explanation             Best Used When
+
+Throttling    "Don't tell me about           You want to know if happened, but you don't 
+              this again for x minute        need an update every single second
+
+
+suppression   "Don't show me alerts if they  You have a known safe activity that looks
+              match this specific condition  threat (vulnerability scanner for example)
+
+ 
+Enrichment    "Add extra info to help me     You need to know if the user is a VIP or if 
+               decide if i should ignore it" IP is a known bad IP before alerting.
+
