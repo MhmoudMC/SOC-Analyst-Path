@@ -1,0 +1,8 @@
+in this lesson, we want to make sure that when a "Bad thing" happens, the right "Action" start automatically.
+it's like this:
+1.The Detection (The Trigger): The SIEM sees 50 failed logins in 1 minutes from one IP.
+2.The Playbook (The Action): A list of steps like: "Check if the IP is internal, block the IP if it's from another country, and message the user".
+
+
+#What i understand: it's just a Recipe book for bad traffics, 
+if the that thing happen, alert if it was external, don't if it was internal, (It could be complex, like if the Developer run a PowerShell command, that is different from HR run a PowerShell command, it's like that )
