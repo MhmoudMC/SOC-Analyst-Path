@@ -1,0 +1,30 @@
+Triage is like working in hospital emergency room. you have many patients (Alerts) coming in, and you cannot treat everyone at once. you must quickly decide:
+1.Who is dying? (Critical security incidents)
+2.Who is just sick? (Minor issues)
+3.Who is actually fine? (False positives/glitches)
+
+Your goal in triage is not to fix the problem yet. Your goal is to classify it so you know where to spend your time.
+
+to do this effectively, analysts use a mental "Triage Checklist"
+
+The Initial Check (The "Is it Real?" test), 
+*You look a Timestamp, is it high velocity (15 tries in 1 minute) Or 5 in 10 minutes?
+*You look for who? did the attacker tried it with multiple account in the company?
+
+
+The Initial Triage Checklist (1.4.1):
+
+Question                      why it matters
+
+Is the source known?         is this a known company server or
+                             a random IP from the internet?
+
+Is the activity successful?  did the attacker actually get in (status=success)
+                             or were they blocked?
+
+Is this "Normal" for         Does this person usually log in at 3AM or 
+this user ?                  is this new behavior?
+
+Are there other alerts?      Is this the only alert, or are there
+                             10 other alerts for this same computer?
+
