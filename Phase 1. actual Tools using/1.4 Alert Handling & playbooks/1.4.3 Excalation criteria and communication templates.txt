@@ -1,0 +1,21 @@
+Escalation means knowing when your cannot handle an alert by yourself and need to call for help (like a Senior Analyst or a Manager).
+a Communication Templates are pre-written messages so you don't waste time thinking about "What to say" during a stressful incident.
+
+#1. Escalation Criteria (When to ask for help). You should move an alert to a higher level if:
+*Critical Systems (Main server. etc)
+*Data Leak
+*out of Control : The malware is spreading faster than you can stop it
+*Legal/Compliance: you find something that must be reported to goverment.
+
+#2.Communication Templates (What to send), instead of writing a long email from scratch, you usea "fill-in-the-blanks" style:
+*Subject: INCIDENT (ID# - [Severity Level] - [Type of Attack])
+*What happened: (Briefly explain the alert)
+*Status: (Investigation/Containing/Resolved)
+*Action Needed: ("Please approve bloking this IP address")
+
+#Escalation Matrix Logic, Escalation isn't just about the "what," but also the "who" and "how fast".
+
+*Tier1 (You): Standard alerts, known false positives, and single-endpoint infections.
+*Tier2 (Senior/Lead): Patterns of lateral movemet, "Out of Control" malsare spreads, or succesful "Data Leaks"
+*Tier 3/Managemt: Compromise of "Critical Systems" (Domain Controllers/SQL) or "Legal/Compliance" triggers.
+
