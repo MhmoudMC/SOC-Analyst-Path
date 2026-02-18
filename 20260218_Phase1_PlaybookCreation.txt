@@ -1,0 +1,144 @@
+Date: 2026-02-18
+Module: 1.4 Alert Handling & Playbooks
+Objective: Create 3 playbooks for common alerts and run tabletop walkthroughs
+Hypothesis/Question: What are the most common SOC alerts and how should analysts respond?
+
+
+PLAYBOOK: Multiple Failed Logins (Brute-Force)
+Created: 2026-2-18
+Version: 1.0
+
+1.TRIGGER CONDITIONS
+-10+ Failed logins in under 1 minute
+-Source: Windows Event "ID 4625", Linux auth.log, application logs
+
+
+2.INITIAL TRAGE CHECKLIST
+-make sure they exist
+-make sure of the target username/s
+-hunt the Source IP/s
+-check if any successful logins occurred after failures (that would be an incident)
+-Initial severity: Medium (escalate if successful login found)
+
+3.INVESTIGATION STEPS:
+  STEP 1: Count failed attempts by source
+  SPL Query: index=main sourcetype=WinEventLog:Security EventCode=4625
+   | stats count by src_ip, TargetUserName
+   | where count > 10
+
+
+  STEP 2: Check for successful logins from the same source 
+  SPL Query: index=main sourcetype=WinEventLog:Security EventCode=4625 
+   src_ip=[malicious_ip]
+   | stats count by src_ip, TargetUserName
+   | where count > 10
+   
+
+  STEP 3: Check if target user exists and is privileged
+  [Check AD or /etc/passwd]
+  
+  
+  STEP 4: Correlate with other alerts on same source/target
+
+4.CONTAINMENT GUIDANCE
+-if active brute force: Temporarily block source IP at firewall 
+-if account compromised: Force password reset + disable account
+-if admin account targeted: Immediate escalation
+
+5.EVIDENCE COLLECTION 
+-Export all events from source IP (last 24h)
+-Screenshot of failed/successful login timeline
+-Note any other systems accessed from same source
+
+6.ESCALATION CRITERIA 
+-Escalate if : Any successful login after failures
+-Escalate if : Target is privileged account (admin, root, service account)
+-Escalate if : Source IP is internal (possible lateral movement)
+
+
+7.RESOLUTION STEPS
+-if false positive: Document reason and close
+-if brute force blocked: add to watchlist, close after monitoring
+-if compromised: Follow incident response process
+-Update alert threshold if needed
+
+8.FALSE POSITIVE PATTERNS
+-User mistyping password (Like me, but usually low volume, same user)
+-Application/service using wrong credentials (check source hostname)
+-VPN authentication with multiple attempts
+
+PLAYBOOK: Suspicious PowerShell Execution
+Created: [2026-2-18]
+Version: 1.0
+
+1. TRIGGER CONDITIONS
+-Malware alert usually remind the analyst of that type of malwares
+-rules that generated it: Opening PowerShell in envirment that didn't use it often times
+
+2.INITIAL TRIAGE CHECKLIST
+[] Make sure the alert isn't a known false positive (like the malware is actually just an update from Microsoft)
+[]Check timestamps and timezone for the devices.
+[]identify affected asset(s) like, is that came after opening an email ? or downloading  free ram from internet (reasonable to try in 2026 haha)
+[]Intitial serverity assessment (High-Critical)
+
+3.INVESTIGATION STEPS: 
+  step 1: the Query:index=main sourcetype="WinEventLog:Security" EventCode=4688
+   Process_name="*powershell.exe"
+   | table _time, Computer, User, Parent_Process_Name, Name_Process_Name,   
+   Process_Command_line
+   | sort -_time
+   Excepted result: i will found the malware command, name, and place
+# i wanna added that,  we have to isolate the machine the second we make sure that is real incident.
+## I used these instead of "Generated perfect ai querys" cause since the powershell commands are rare anyway, i think checking the over all commands will help, not the opposite, and i can use 'NOT' to hide the developer machines from the sections.
+
+step 2: now since i know when the malware turned on, i will most likely have the source of it to.
+   -i will search about the malware from the firewall to see, from where did it came.
+   -Excepted result: now there is only one direction in that case, if it was from other internal device -> escalation, if it was from external IP -> block IP, 
+
+Step 3: More investigation
+-search in the whole company about similar malware movements,
+-make sure there is no other devices infected
+-escalation should contain when, why, where, who, what.
+
+4. CONTAINMENT GUIDANCE
+- isolate the host, the second you see the process in the logs
+- also, the second you see it in the logs.
+- disable any promesions in the account until case close
+
+5. EVIDENCE COLLECTION
+- most likely on application logs (EDR)
+- -kill commands 
+- need while isolating, while -kill commands, and when escalation if possible
+
+6. ESCALATION CRITERIA
+- Escalate to tier 2 if: the incident doesn't have data leak, or legal problems, or government stuff
+- Escalate to management if : the incident have data leak, or real legal problems or government damage
+
+
+
+7.RESOLUTION STEPS
+- close the alert if the powersheel commands were not-harmful commands like Windows Updates.
+- Remediation actions needed are reconnect the account's promisions after the case ended
+- Documentation should have : the commands, the user's account, escalation process if allowed.
+
+8.FALSE POSITIVE PATTERNS
+- there is no "Password change" or lateral movement, or high files size "bytes" or process after the powerhsell command.
+- make a whitelist or update the white list, with specific commands from the same events if they were false positive and trusted {if they were false positive, but not trusted, than do not add them to white list )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
