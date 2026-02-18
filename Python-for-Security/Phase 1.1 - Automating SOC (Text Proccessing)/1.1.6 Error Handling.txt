@@ -1,0 +1,23 @@
+error handling keeping scripts alive, your scripts will encounter unexpected situations:
+*Missing log files
+*Corrupted data
+*Permission errors
+*Network timeouts
+#Without error handling, your script crashes and stops working:
+//#Bad - script crashes if file doesn't exist
+file = open.("firewall_log.txt", "r")
+logs = file.read() #CRASH if file missing!
+//
+
+#With Try/Except, your script handles problems gracefully:
+// #GOOD - script keeps running
+try:
+    file = open("firewall_log.txt", "r")
+    logs = file.read()
+    print(f"Successfully read {len(logs)} characters")
+except FileNotFountError:
+    print("Alert: Firewall log file not found. Using default empty log.")
+    log = "" # Set default value so script can continue
+
+
+I will try to make a project with that code.
