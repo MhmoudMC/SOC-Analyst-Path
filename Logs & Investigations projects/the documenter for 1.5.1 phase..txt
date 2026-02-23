@@ -1,0 +1,25 @@
+the documenter for 1.5.1 phase.
+i first used that spl code to find most "Noisy" IPs {source="incident_test_logs.txt" host="Mhmoud" sourcetype="web traffic" 
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip}
+i found that 185.220.101.4 was calling for thing 4 times (In real world, it would be more noisy) so i saw in what cases was he calling, and i found that he failed 4 times for use webadmin, the timing was sus, because he was trying a password every 2 seconds, beaconing from the current context.
+then i searched about every traffic or even mentioned that IP using that code {source="incident_test_logs.txt" host="Mhmoud" sourcetype="web traffic" 
+185.220.101.4}
+i found that he failed 4 times trying to git administrator access in new port every time, and then he uses GET Command "using Linux terminal" to gain admin access
+than he uses POST command on the login page, and start scanning "Using NMAP" engine.
+then he connected with internal IP {Critical} for outbound UDP connection and then he mentioned again but this time in the server01 logs, he connected 10.0.0.100 {Jumped from 192.168.1.105 to that server IP "Lateral movement"}
+and than he tried to launch Java scripts in the app_server
+and than he launched a remote code, to create new malicious process. 
+the attacker successfully wen, best thing to do now is, ban ip, isolate server01 and the internal IP, escalation to L2 analyst team to deal with, improve "Beaconing Detect Engine" inside the security End points.
+this whole message was typed while investigating, to tell what am i thinking while investigating.
+
+{WHAT I SHOULD USED DURING THE INVESTIGATION :
+index=main "10.0.0.100" OR "192.168.1.105" 
+| search "ASA-6-302013" OR "Teardown"
+| stats sum(bytes) as total_bytes_exfiltrated by src_ip, dst_ip.}	
+
+Who: The attacker used external IP 185.220.101.4 to compromise the internal use account jsmith.
+What: A critical data breach occurred. the attacker installed a persistence malware (updater.exe), disabled windows Defender, and stole approximately 2.5GB of data, including the customer_db and finance_db.
+where: The attacker started iat the SH getway, moved to WIN-JSMITH (workstation) and finally targted the app_server and database servers.
+when: The activity began on 2023-10-10 at 22:15:34 (First Brute Force) and was contained on 2023-10-12 at 08:30:12 when the account was disabled.
+Why Root Cause): The attacker successfully guessed the password for jsmith via  a brute-force attack because there was no account lockout policy or multi-factor authentication (MFA) in place.
