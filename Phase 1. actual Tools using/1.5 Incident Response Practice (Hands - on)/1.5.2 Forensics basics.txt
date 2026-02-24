@@ -1,0 +1,16 @@
+In my simulation (1.5.1), I already started doing this by finding when the attack began and ended. Now we will make it professiona
+
+1.Building a Timeline (Story), A timeline helps you see the "Kill Chain" you don't just look at one log: you put everything in order.
+*Step 1: Find the first interaction (,,the first failed login at 22:15:34)
+*Step 2: Follow the Lateral Movement (,,when attacker jumped from 192.168.1.105 to 10.0.0.100)
+*Step 3: Identify the Impact (when 2.5GB of data was stolen)
+
+2.Evidence Collection (The "Proof") as a SOC analyst, you must save evidence before it is deleted or changed.
+*Host Evidence:
+  *Processes: List what was running (like updater.exe or powershell.exe)
+  *Files: Note which files were accessed or created (like customer_db)
+*Network evidence:
+  *Firewall Logs: Check for "Teardown" events or high byte counts
+  *IP Reputation: Save screenshots from tools like VirusTotal showing IP is malicious.
+
+
