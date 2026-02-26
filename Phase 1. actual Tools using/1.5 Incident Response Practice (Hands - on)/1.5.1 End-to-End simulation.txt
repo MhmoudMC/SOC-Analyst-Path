@@ -1,0 +1,20 @@
+the Lifecycle of simulation, 
+*Detection {Splunk trigger alert}
+*Alert {notice notable event}
+*Triage {you use initial triage checklist to decide if it is a true positive or not}
+*Containment {you follow playbook to stop the attacker}
+*Root Cause: {You perform a deep-dive investigation into how attack happened}
+*Report {Write a professional incident report documenting every step.
+
+
+Step 1: Detection & Alerting, you don't just look at logs, THE SIEM (Splunk) uses Logic to find bad things automatically.
+*The Trigger: A rule runs in the background. like "If 10 failed logins happened in 1 minute, alert"
+*The Notable Event: This is the alert you see on your dashboard.
+
+Step 2: Initial Triage (The "Quick Look"), here, you need to decide if this is a TP or a FP
+Using Initial Triage Checklist, you mist check:
+1.Who is the use ? 
+2.Where is it coming from ? (The Source IP is like 185.220.101.4)
+3.Was it successful? You must search for EventCode=4624 or accepted password to see if the attacker actually got in.
+
+
