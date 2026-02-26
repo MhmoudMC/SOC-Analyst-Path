@@ -1,0 +1,5 @@
+this lesson focused about what happen after the fire is out. in real world you don't just close the ticket; you make sure the same attack cannot happen again.
+*Lesson Learned: you look back at the incident to see what went well and what failed.
+did the logs show everything? did the analyst react fast enough ?
+*Signature Hardening: This means "leveling up" your detection rules. if an attacker used a specific file name or IP address, you create a permanent "signature" (a rule) to the SIEM catches it instantly next time.
+*Timeline Building: You must be able to tell the story of the attack from the start to finish using timestamps you found in your logs.
