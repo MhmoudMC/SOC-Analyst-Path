@@ -1,0 +1,15 @@
+In a SOC, we don't just look at raw logs; we use Dashboards to see the "big picture." 🖼️ Instead of searching for one IP at a time, a dashboard helps us spot patterns, like a sudden spike in failed logins across the whole network.
+
+Key SOC Dashboard Types
+1.Detection Heatmap: this shows which areas of your network {or which MITRE ATT&CK techniques} are seeing the most "hits". it helps you see where the "fire" is.
+2.Endpoint Health: This monitors your "forwarders." it tells you if your computers are actually sending logs or if they stopped talking to Splunk
+3.Notable Events: This is a live list of most important security alerts that need an analyst's eyes right now.
+
+
+#Understanding the Detection Heatmap
+A heatmap helps an analyst see which "tactics" or "Techniques" (Like Brute Force or Privilege Escalation) are happening most often. instead of just a list of alerts, it uses colors (like dark red for many alerts and light yellow for few) to show where the danger is.
+
+##Building the Search Logic.
+To create a Severity or tactic view, we use the stats command in splunk to count events.
+for example, if we want to see alerts by their severity level, we might use a query like:
+/ index=alerts | stats count by severity /
