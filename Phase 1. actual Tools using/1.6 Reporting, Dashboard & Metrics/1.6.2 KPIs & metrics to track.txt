@@ -1,0 +1,20 @@
+In soc, KPIs measure how well the team is performing. the plan highlights four main metrics to track:
+*MTTD (Mean Time To Detect): The average time it takes for your tools or team to notice a cyber threat. Faster is better.
+*MTTR (Mean Time To Respond): The average time it takes to contain and fix the threat after you detect it.
+*Alert Volume: The total number of alarms the SOC receives every day or week. if this is to high, analysts get tired and might miss real attacks.
+*False Positive Rate: The percentage of alarms that trigger on safe, normal activity. we tune our rules to keep this number as low as possible.
+
+Since your plan requires building a Weekly SOC Metrics Dashboard, let's look at how all four work together:
+
+1. MTTD & MTTR (The Speed Metrics)
+There tell you how fast your "Detection" and "Response" are.
+ * MTTD : The time from when an attacker start until your SIEM creates an alert. if this high, your detection rules might be too weak.
+ * MTTR : the time from when the alert appears until you finish the "Containment" and "Resolution" Steps in your playbook, if this is high, your playbooks might be too confusing.
+
+2.Alert Volume (The Capacity Metric)
+This is simply the total number of "Notable Events" or alarms.
+*Why it matters: If your Alert Volume goes up but your team size stays the same, your MTTR will naturally get worse because analysts are overwhelmed.
+
+3.False Positive Rate (The Quality Metric)
+A "False Positive" is an alert for something that isn't actually a threat {Like a developer running a test that looks like an attack).
+*Tunning: Your plan requires "Alert noise reduction & tuning" if your False Positive rate is high (eg 80%) you are wasting your time on 8 out of 10 alerts.
