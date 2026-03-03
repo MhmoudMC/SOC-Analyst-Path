@@ -15,10 +15,10 @@ I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
 
 ### 📊 Splunk Dashboards
 - Main Dashboard have:
-**Failed login attempts**
-**High Data Transforming Panel**
-**.exe Activites**
-**High IP Frequency {refresh every 30s}**
+**Failed login attempts**,
+**High Data Transforming Panel**,
+**.exe Activites**,
+**High IP Frequency {refresh every 30s}**.
 
 ### 📚 Core Knowledge
 - Phase 0: Networking, logs, traffic patterns, PCAP thinking
