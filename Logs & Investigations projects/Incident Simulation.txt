@@ -1,4 +1,4 @@
-the documenter for 1.5.1 phase.
+20260211 _Phase1_1.5.1_Incident_Simulation.txt
 i first used that spl code to find most "Noisy" IPs {source="incident_test_logs.txt" host="Mhmoud" sourcetype="web traffic" 
 | rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
 | stats count by src_ip}
@@ -23,3 +23,4 @@ What: A critical data breach occurred. the attacker installed a persistence malw
 where: The attacker started iat the SH getway, moved to WIN-JSMITH (workstation) and finally targted the app_server and database servers.
 when: The activity began on 2023-10-10 at 22:15:34 (First Brute Force) and was contained on 2023-10-12 at 08:30:12 when the account was disabled.
 Why Root Cause): The attacker successfully guessed the password for jsmith via  a brute-force attack because there was no account lockout policy or multi-factor authentication (MFA) in place.
+
