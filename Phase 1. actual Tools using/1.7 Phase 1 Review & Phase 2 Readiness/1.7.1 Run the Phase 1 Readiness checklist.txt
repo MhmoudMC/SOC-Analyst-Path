@@ -1,0 +1,16 @@
+Phase 1 Readiness Checklist - RE-EVALUATED:
+1.Can I list SIEM components and data flow ?, DONE:
+"SIEM collects events, sorts them, shows them by SPL searching" simple.
+
+2.Ingest at least 2 distinct log types ?, DONE:
+I worked with web traffic logs, Windows Security events (4688), AV logs, and firewall-like data
+
+3.investigator queries saved ?, Done:
+i have multiple: IP frequency, specific IP search, exfiltration detection, process creation, lateral movement tracking
+
+4. 3 detection rules implemented and tested?, DONE:
+beaconing detection, brute-force detection, data exfiltration detection.
+
+5.One end-to-end incident simulation?, DONE:
+this entire investigation IS simulation {phase 1.5.1 Documenting}
+
