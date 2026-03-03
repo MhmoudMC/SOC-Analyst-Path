@@ -1,13 +1,24 @@
-# SOC Analyst Path
+# SOC Analyst Journey
 
-This respository documents my progress learning multiable tools, ways of thinking, and personality for cybersecurity and SOC opeations.
+I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
+
+## What I've Built
+
+### 🔍 Investigations
+- [Full Breach Investigation](link) - Tracked an attacker from brute force to 2.5GB exfiltration
+- [Timeline Analysis](link) - Reconstructed attack timeline using logs
+
+### 🛠️ Python Security Tools
+- [Intruder Finder](link) - Blacklist checker for failed logins
+- [Log IP Extractor](link) - Regex-based IP parser
+- [Failed Login Monitor](link) - Generates alerts from auth logs
+
+### 📊 Splunk Dashboards
+- [Failed Login Monitor](link) - Real-time brute force detection
+
+### 📚 Core Knowledge
+- Phase 0: Networking, logs, traffic patterns, PCAP thinking
+- Phase 1: SIEM, detection engineering, incident response
 
 ## Current Focus
-- Learning thinking first
-- Learning using tools
-- personality
-- business impact
-
-## Goal
-Use the SOC Analyst personality to work for AI Security Engineer.
-A Possibility to work in SOC L1 Anlyst, than improve myself towards L2 Analyst.
+Completing Phase 1, building portfolio, preparing for L1 SOC roles.
