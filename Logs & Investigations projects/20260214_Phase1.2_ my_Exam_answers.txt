@@ -1,7 +1,7 @@
 SOC PHASE 1.2.3 EXAM - MY ANSWERS
 ==================================
 Date: 2026-02-14
-Analyst: [Your Name]
+Analyst: [Mhmoud]
 
 QUESTIONS I ANSWERED:
 ----------------------
@@ -72,4 +72,5 @@ KEY FINDINGS:
 - Cobalt Strike beacons detected at 20:15
 
 TIME SPENT: [Your time]
+
 NEXT: Ready for 1.3 Detection Engineering!
