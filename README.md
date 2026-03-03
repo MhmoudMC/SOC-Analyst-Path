@@ -14,7 +14,11 @@ I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
 - [Failed Login Monitor](link) - Generates alerts from auth logs
 
 ### 📊 Splunk Dashboards
-- [Failed Login Monitor](link) - Real-time brute force detection
+- Main Dashboard have:
+**Failed login attempts**
+**High Data Transforming Panel**
+**.exe Activites**
+**High IP Frequency {refresh every 30s}**
 
 ### 📚 Core Knowledge
 - Phase 0: Networking, logs, traffic patterns, PCAP thinking
