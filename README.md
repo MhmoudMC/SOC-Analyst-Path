@@ -26,3 +26,6 @@ I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
 
 ## Current Focus
 Completing Phase 1, building portfolio, preparing for L1 SOC roles.
+
+## Resume
+I Made a Resuem, and Willing to Hear Any Recommendations
