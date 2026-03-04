@@ -1,31 +1,67 @@
-# SOC Analyst Journey
+# SOC Analyst Portfolio
 
-I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
+Aspiring SOC Analyst focused on log analysis, incident investigation, and security automation.
 
-## What I've Built
+Documenting hands-on investigations, SIEM detections, and blue-team development while preparing for SOC L1 roles.
 
-### 🔍 Investigations
-- [Full Breach Investigation](link) - Tracked an attacker from brute force to 2.5GB exfiltration
-- [Timeline Analysis](link) - Reconstructed attack timeline using logs
+## 🧠 SOC Analyst Capabilities
 
-### 🛠️ Python Security Tools
-- [Intruder Finder](link) - Blacklist checker for failed logins
-- [Log IP Extractor](link) - Regex-based IP parser
-- [Failed Login Monitor](link) - Generates alerts from auth logs
+- Log analysis and anomaly detection
+- Alert triage and investigation
+- Attack timeline reconstruction
+- IOC extraction and documentation
+- SIEM monitoring and dashboard analysis
+- Python automation for security tasks
 
-### 📊 Splunk Dashboards
-- Main Dashboard have:
-**Failed login attempts**,
-**High Data Transforming Panel**,
-**.exe Activites**,
-**High IP Frequency {refresh every 30s}**.
+## 🔍 Investigations
 
-### 📚 Core Knowledge
-- Phase 0: Networking, logs, traffic patterns, PCAP thinking
-- Phase 1: SIEM, detection engineering, incident response
+### Full Breach Investigation
+Tracked attacker activity from brute force access to 2.5GB data exfiltration.
 
-## Current Focus
-Completing Phase 1, building portfolio, preparing for L1 SOC roles.
+- Correlated firewall, system, and application logs
+- Reconstructed attacker timeline
+- Identified IOCs
+- Provided containment recommendations
 
-## Resume
-- [Mhmoud_Elbadre_SOC_Resume](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/Resume/Mhmoud_ELbadrey_SOC_Resume.pdf)I Made a Resuem, and Willing to Hear Any Recommendations
+## 🛠 Python Security Tools
+
+- Intruder Finder — checks suspicious IPs against blacklist
+- Log IP Extractor — regex-based log parser
+- Failed Login Monitor — detects authentication attacks
+
+## 📊 SIEM Dashboards
+
+Built Splunk dashboards monitoring:
+
+- Failed login attempts
+- High IP frequency activity
+- Suspicious executable activity
+- Data transfer anomalies
+
+## 🔄 SOC Investigation Workflow
+
+1. Monitor SIEM dashboards and alerts
+2. Verify log ingestion and data sources
+3. Validate alert legitimacy
+4. Correlate logs across systems
+5. Extract indicators of compromise
+6. Build attack timeline
+7. Recommend containment actions
+
+## 📚 Training Path
+
+- Phase 0 — Networking, logs, traffic analysis
+- Phase 1 — SIEM operations and incident response
+- Python for security automation (ongoing)
+- TryHackMe Blue Team path (ongoing)
+
+## 🚀 Current Focus
+
+- Improving alert triage speed
+- Practicing real-world investigations
+- Building detection logic
+- Preparing for SOC L1 opportunities
+
+## 📄 Resume
+
+[View Resume](link)
