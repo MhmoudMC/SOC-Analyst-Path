@@ -64,4 +64,4 @@ Built Splunk dashboards monitoring:
 
 ## 📄 Resume
 
-[View Resume](link)
+[View Resume](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/Resume/README.md)
