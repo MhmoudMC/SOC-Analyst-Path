@@ -31,7 +31,7 @@ Tracked attacker activity from brute force access to 2.5GB data exfiltration.
 
 ## 📊 SIEM Dashboards
 
-Built Splunk dashboards monitoring:
+[Dashboard](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/images/Main_Dashboard.png)Built Splunk dashboards monitoring:
 
 - Failed login attempts
 - High IP frequency activity
