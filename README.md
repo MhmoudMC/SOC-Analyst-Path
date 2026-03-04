@@ -28,4 +28,4 @@ I'm an aspiring SOC analyst documenting my path from beginner to job-ready.
 Completing Phase 1, building portfolio, preparing for L1 SOC roles.
 
 ## Resume
-I Made a Resuem, and Willing to Hear Any Recommendations
+- [Mhmoud_Elbadre_SOC_Resume](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/Resume/Mhmoud_ELbadrey_SOC_Resume.pdf)I Made a Resuem, and Willing to Hear Any Recommendations
