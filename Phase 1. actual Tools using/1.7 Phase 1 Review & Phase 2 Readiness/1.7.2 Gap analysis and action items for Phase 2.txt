@@ -1,0 +1,27 @@
+In simple English: Gap Analysis means looking at what you can do now versus what a real SOC needs you to do.
+
+1.7.2 Gap Analysis (What is missing?):
+
+1.The "Manual" Gap (Orchestration)
+*The Problem: In phase 1, you do everything by hand (manual). if you see a bad IP, you manually search it in VirusTotal.
+*The Gap: In a real SOC, this is slow.
+*Action Item: Research SOAR (Security Orchestration, Automation, and Response) tools like Cribl, Tines, or Splunk SOAR.
+#Goal for Phase 2: How can I make a script or a tool do the boring work for me ?
+
+2.The "Visibility" Gap (Labs)
+*The Problem: You have logs from a local file, but you don't have logs from the cloud? Fro EDR (Endpoint Detection).
+*The Gap: You only see what you "ingest." If a hacker moves through the network using a protocol you aren't logging, you are blind.
+*Action Item: Set UP a more complex lab (Active Directory, Sysmon, or a Cloud Sandbox).
+*Goal for Phase 2: Ingest data that shows Lateral Movement (Hackers moving between computers)
+
+3.The "Reactive" Gap (Threat Hunting)
+*The Problem: IN Phase 1, you wait for an Alert to fire. This is "Reactive."
+*The Gap: Advanced hackers don't always trigger alerts.
+*Action Item: Learn to search for "sings of life" without an alert. This is Threat Hunting.
+*Goal for Phase 2: Use the MITREATT&CK framework to look for techniques, not just simple IP addresses of file names.
+
+Feature  	Phase 1 (Where you are)	        Phase 2 (Where you are going)
+Mindset	        Reactive (Wait for alert)	Proactive (Go find the enemy)
+Speed	        Manual (Copy/Paste)	        Automated (Orchestration/SOAR)
+Data	        Basic (Logs/Files)	        Deep (Memory, Network Traffic, EDR)
+Logic	        Known Bad (Blacklists)	        Unusual Behavior (Anomalies)
