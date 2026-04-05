@@ -62,6 +62,18 @@ Tracked attacker activity from brute force access to 2.5GB data exfiltration.
 - Building detection logic
 - Preparing for SOC L1 opportunities
 
+## 🛡 What I Bring to a SOC Team
+
+- Triage and investigate alerts independently
+
+- Correlate multi-source logs to identify attack patterns
+
+- Build basic detection logic and dashboards
+
+- Automate repetitive analysis tasks using Python
+
+- Document incidents clearly for team response
+
 ## 📄 Resume
 
 [View Resume](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/Resume/README.md)
