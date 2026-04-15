@@ -9,4 +9,4 @@ A complete walkthrough of a simulated breach:
 
 ## Phase 1.2 Exam
 Test covering SPL queries for threat detection:
-- [Exam Answers](link)
+- [Exam Answers](https://github.com/MhmoudMC/SOC-Analyst-Path/blob/main/Logs%20%26%20Investigations%20projects/20260214_Phase1.2_%20my_Exam_answers.txt)
