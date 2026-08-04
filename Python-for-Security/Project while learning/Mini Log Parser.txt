@@ -1,0 +1,9 @@
+raw_log = "  2026-08-04 | ALERT | Failed root login attempt from 172.16.0.22 \n "
+Clean_log = raw_log.strip()
+
+if Clean_log.find(Failed) != -1 :
+    print(f"Alert: Failed attempt located")
+    parts = Clean_log.split()
+    attackers_ip = parts[#the place is different, depent on the Logs, could be 8 for network, or 9 for server application]
+
+    print(f"[RED] Target IP Identified: {attacker_ip}")
