@@ -1,0 +1,38 @@
+Standard Python lists work fine for small tasks, but when analyzing millions of firewall events per second, they are too slow. NumPy gives us Arrays, which process large numerical data up to 50 faster while using much less memory.
+
+# Python Lists vs. NumPy Arrays :
+
+* Python List: Stores items anywhere in memory and support mixed data types. Flexible, but slow for heavy calculations.
+
+* NumPy Array(np.array): Stores fixed data types tightly together in a single memory block. Designed for high-speed mathematical operations.
+
+* SOC Impact: Searching for calculating math on 10,000,000 network log metrics with a standard Python list will lag your system; NumPy does it in milliseconds. 
+
+# Key Advantages 
+
+* Contiguous Memory: Keeps raw numbers side-by-side in RAM so your CPU processes them instantly.
+
+* Vectorization: Allows you to perform math across millions of data points at once without writing slow 'for' loops.
+
+SOC Rule of Thumb
+Use standard Python lists for raw text parsing (strings like IP addresses or user handles). Switch to NumPy arrays whenever you do heavy math on numeric metrics (packet sizes, event timestamps, traffic volume).
+
+>>> Code Practice: Python List vs. NumPy Array ; [
+import numpy as np
+
+# Standard Python Lists: Packet sizes in bytes 
+packet_size_list = [64, 128, 512, 1024, 1500]
+
+# Convert to a NumPy Array 
+packet_size_arr = np.array(packet_sizes_list)
+
+# Requirements: Add 20 bytes of header size to every packet
+
+# Slow Python List Way (Requires a loop)
+list_result = [size + 20 for size in packet_sizes_list]
+
+#Fast NumPy Way (Vectorized math = No loop needed)
+arr_result = packet_sizes_arr + 20
+
+print("Original Array:", packet_sizes_arr)
+print("Updated Array: ", arr_result)
