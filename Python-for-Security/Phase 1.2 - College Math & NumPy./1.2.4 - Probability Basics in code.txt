@@ -1,0 +1,20 @@
+@ SOC Scenario: Brute Force Logins
+imagine the server getting 100 login attempt a day, on a normal day, about 5% (0.05) of these fail because users simply forget their passwords. Today you suddenly see 20 failed logins, is a hacker trying to guess password, or are people just very forgetful today ?
+
+
+The Code: Binomial Probability
+	We use the Binomial Distribution(binom.pmf) from 'scipy.stats'. it calculates the exact chances of a specific success or failure rate happening in a set number of tries.
+
+Python [
+from scipy.stats import binom
+# n = total login attempts today
+# p = normal baseline failure rate (5% or 0.05%)
+# k = the number of fails we actually saw today (20)
+
+n = 100
+p = 0.05
+k = 20
+
+# Calculate the chance of exactly 20 fails happening naturally 
+chance = binom.pmf(k, n, p)
+print(f"Probability this is normal: {chance}") 

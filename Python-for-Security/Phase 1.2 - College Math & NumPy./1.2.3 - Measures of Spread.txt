@@ -1,0 +1,46 @@
+While the mean gives us a central baseline, it doesn't tell us if traffic is steady or jumping widely.
+
+# np.std() : basically reveal if the server is chaotic or not, if the result is high 
+
+
+code [ 
+std_dev = np.std(log) 
+threshold = std_dev * 3 
+
+
+
+
+
+
+
+
+
+
+Measures of Spread quantify how much your log data deviates from that average center :
+
+* Range : The gap between the maximum and minimum values.
+
+* Variance: The average squared distance of each log entry from the mean.
+
+* Standard Deviation (np.std()): The square root of variance, measuring how far values typically drift from the normal average (in original units, like logs/hour).
+
+Real world use : Python [
+import numpy as np
+
+# 24 hours of log counts
+logs = np.array([50, 48, 52, 51, 49, 50, 52, 48, 51, 49, 50, 52, 
+                 48, 51, 49, 50, 52, 48, 51, 49, 50, 52, 48, 450])
+
+
+# Calculate central tendency and spready 
+
+mean = np.mean(logs)
+std_dev = np.std(logs)
+
+
+# Calculate anomaly threshold
+
+threshold = mean + (3 * std_dev)
+
+
+

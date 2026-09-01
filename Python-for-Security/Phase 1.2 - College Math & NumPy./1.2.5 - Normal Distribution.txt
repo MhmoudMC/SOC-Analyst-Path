@@ -1,0 +1,19 @@
+(SOC Ball Curve)
+* Concept : Most hours generate a baseline level of events (e.g 50 logs/hour). Standard deviation measures normal noise.
+* 3-Sigma Rule: 68% of normal activity falls within ~1Sigma, 95% within ~2Sigma, and 99.7% within ~3Sigma, anything beyond ~3Sigma is statistical anomaly.
+* Metric: The Z-score measures exactly how many standard deviations an event is from mean : (x - mule) / sigma . where x is the current traffic, mule is the baseline mean, and sigma is standard deviation. 
+
+Python [
+import numpy as np
+from scipy.stats import norm
+
+# Baseline trafafic parameters
+mean_traffic = 50
+std_traffic = 15
+
+# Probability density of normal vs spike traffic 
+prob_normal = norm.pdf(50, loc=mean_traffic, scale=std_traffic)
+prob_spike = norm.pdf(450, loc=mean_traffic, scale=std_traffic)
+print(f"Probability of 50 logs: {prob_normal:.4f}")
+print(f"Probability of 450 logs: {prob_spike:.10f}") # Practically 0%
+]
