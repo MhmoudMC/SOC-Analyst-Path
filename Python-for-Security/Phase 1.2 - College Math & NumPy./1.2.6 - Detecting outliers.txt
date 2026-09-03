@@ -1,0 +1,34 @@
+in SOC security, any traffic volume higher than Mean + (3 * StdDev) is a statistical anomaly.
+
+# The 3-Sigma Rule
+	* Mean (mule): Your normal average traffic level.
+	* StdDev(Sigma): How much traffic naturally fluctuates during normal hours.
+	* 3 StdDev Threshold: In a stand normal distribution, 99.7% of all normal activity stays within 3 standard deviations from the average. Anything above this threshold triggers alert.
+
+[ import numpy as np
+
+# Step 1: Baseline data (normal hourly log count)
+traffic_history = np.array([48, 52, 50, 49, 51, 47, 53, 50])
+
+# Step 2: Calculate mean and chaos level
+mean_traffic = np.mean(traffic_history)
+std_traffic = mp.std(traffic_history)
+
+# Step 3: Calculate the outlier threshold 
+alert_threshold = mean_traffic + (3 * std_traffic)
+
+# Step 4: test current incoming traffic 
+current_hour_traffic = 450 
+
+print(f"Baseline Mean: {mean_traffic:.1f} | Threshold: {alert_thredhold:.1f}")
+
+if current_hour_traffic > alert_threshold:
+	print(f"ALERT: Traffic spike detected! ({current_hour_traffic} events/hr)")
+else:
+	print("Traffic levels normal.")
+]
+
+# Get Baseline Data (the useable logs)
+# Calculate mean and chaos level using (Useable) logs
+# Calculate the outlier threshold [ mean_traffic + ( 3 * std_traffic) ]
+# Test current incoming traffic (or test a new log) 

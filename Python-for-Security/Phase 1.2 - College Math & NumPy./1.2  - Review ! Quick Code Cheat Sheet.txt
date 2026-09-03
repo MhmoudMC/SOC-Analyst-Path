@@ -1,0 +1,20 @@
+import numpy as np
+from scipy import stats
+
+# 1.2.1 NumPy Array Creation
+logs = np.array([10, 12, 15, 11, 13, 300])
+
+# 1.2.2 Central Tendency (Baseline)
+mean_val = np.mean(logs)
+
+# 1.2.3 Spread / Chaos Level
+std_val = np.std(logs)
+
+# 1.2.4 Probability of Specific Events
+attack_prob = stats.binom.pmf(k=3, n=10, p=0.05)
+
+# 1.2.5 Bell Curve Density
+density = stats.norm.pdf(x=15, loc=mean_val, scale=std_val)
+
+# 1.2.6 Outlier Logic
+is_alert = current_hour_traffic > (mean_val + (3 * std_val))
