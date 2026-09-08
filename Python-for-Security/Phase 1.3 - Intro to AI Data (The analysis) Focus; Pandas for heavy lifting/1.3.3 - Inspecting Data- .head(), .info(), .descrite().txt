@@ -1,0 +1,29 @@
+* 'df.head(10)'   : Previews the top 10 events.
+* 'df.info()'     : Audits log integrity and column data types.
+* 'df.describe()' : Generates baseline statistics for numerical data.
+
+
+
+Method		:	What it does		:	Why You Use It in SOC 
+
+df.head()	: Displays the first n rows	: Quick visual check to confirm the log columns parsed correctly.
+		  (default is 5)		
+
+df.info()	: Prints column name, total rows: Checks if any log fields are missing data or if timestamps were loaded as raw text (object).
+		  non-pull counts, and data type
+
+df.describe()	: Calculates summary statistics	: Instantly spots abnormal statistical spikes(e.g., a massive jump in port numbers or packet sizes).
+		  (Count, mean, std, min, max)
+		  numeric columns.
+
+[import pandas as pd 
+df = pd.read_csv("incident_test_logs.csv")
+
+# 1. Preview the top 5 logs entries
+print(df.head())
+
+# 2. View log structure, data types, and total count
+df.info()
+
+# 3.Run fast statistical metrics across numerical fields
+]

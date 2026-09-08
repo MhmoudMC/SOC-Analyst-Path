@@ -1,0 +1,4 @@
+Most security logs and tables are saved as CSV (Comma Separated Values) files, A CSV file is a simple test file that works like a spreadsheet.
+
+# Load the file into a variabl
+df = pd.read_csv("security_logs.csv")
