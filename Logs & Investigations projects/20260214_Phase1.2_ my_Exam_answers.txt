@@ -71,6 +71,6 @@ KEY FINDINGS:
 - alice later did sudo cat /etc/shadow (credential harvesting)
 - Cobalt Strike beacons detected at 20:15
 
-TIME SPENT: [Your time]
+TIME SPENT: [20 Minutes]
 
 NEXT: Ready for 1.3 Detection Engineering!
