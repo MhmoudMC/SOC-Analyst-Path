@@ -166,9 +166,9 @@ SOC Analyst with hands-on incident investigation, Splunk detection engineering, 
 - System revived and safe for forensic analysis
 - Malware sample preserved for threat analysis
 - Demonstrated understanding of incident response protocols and safe malware handling
-
+last
 **Proof:** Real project completion, documented in GitHub
-
+last
 ---
 
 ### Splunk SOC Dashboard — Real-Time Monitoring
@@ -215,9 +215,9 @@ SOC Analyst with hands-on incident investigation, Splunk detection engineering, 
 
 ## EDUCATION & TRAINING
 
-**AI Route Training Program** — AI Track, Benghazi, Libya | Currently Enrolled
-- AI specialization pathway
-- Currently in 2nd semester
+**CS Route Training Program** — CS Track, Benghazi, Libya | Currently Enrolled
+- CS specialization pathway
+- Currently in 3nd semester
 - Flexible schedule for professional opportunities
 - Strong academic standing
 
