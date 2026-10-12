@@ -1,0 +1,7 @@
+# Python dependencies
+
+# These are optional and mainly relevant for data-analysis or statistical exercises.
+# Standard-library-only scripts typically do not require external packages.
+
+numpy>=1.26.0
+pandas>=2.2.0
