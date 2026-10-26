@@ -39,8 +39,8 @@ Explore the folders in this order:
 
 1. `docs/`
 2. `Python-for-Security/`
-3. `Phase 1. actual Tools using/`
-4. `Logs & Investigations projects/`
+3. `phase-1-siem-and-detection/`
+4. `logs-and-investigations/`
 5. `RESUME_2025.md`
 
 ## Notes

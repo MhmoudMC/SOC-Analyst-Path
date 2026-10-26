@@ -17,8 +17,8 @@ This repo is a personal learning and portfolio workspace, not a production secur
 - `README.md` — project overview and entry point
 - `RESUME_2025.md` — resume-style profile and experience summary
 - `Python-for-Security/` — Python fundamentals, SOC automation, and security tooling exercises
-- `Phase 1. actual Tools using/` — Splunk/SIEM learning, queries, and detection work
-- `Logs & Investigations projects/` — investigation writeups, reports, and exercises
+- `phase-1-siem-and-detection/` — Splunk/SIEM learning, queries, and detection work
+- `logs-and-investigations/` — investigation writeups, reports, and exercises
 - `Dashboards/` — dashboard-related artifacts and visual outputs
 - `SOC Folder- Basics and thinking/` — foundational concepts and analytical notes
 - `images/` — screenshots, diagrams, and supporting visuals
@@ -81,8 +81,8 @@ Then review the project materials in this order:
 1. `README.md`
 2. `docs/LEARNING_PATH.md`
 3. `Python-for-Security/`
-4. `Phase 1. actual Tools using/`
-5. `Logs & Investigations projects/`
+4. `phase-1-siem-and-detection/`
+5. `logs-and-investigations/`
 6. `RESUME_2025.md`
 
 ## Current focus
