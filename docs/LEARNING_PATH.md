@@ -55,7 +55,7 @@ The projects in this repository reflect the current stage of learning in:
 ## Relevant folders
 
 - `Python-for-Security/` — Python security learning and scripts
-- `Phase 1. actual Tools using/` — SIEM/detection engineering notes and exercises
-- `Logs & Investigations projects/` — scenarios, incident reviews, and report training
+- `phase-1-siem-and-detection/` — SIEM/detection engineering notes and exercises
+- `logs-and-investigations/` — scenarios, incident reviews, and report training
 - `Dashboards/` — visual reporting and SIEM dashboard examples
 - `SOC Folder- Basics and thinking/` — conceptual foundation notes
